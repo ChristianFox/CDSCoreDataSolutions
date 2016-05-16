@@ -12,6 +12,11 @@
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([DEMOAppDelegate class]));
+        Class appDelegateClass = NSClassFromString(@"CDSTestsAppDelegate");
+        if (appDelegateClass == nil) {
+            appDelegateClass = [DEMOAppDelegate class];
+        }
+        
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass(appDelegateClass));
     }
 }

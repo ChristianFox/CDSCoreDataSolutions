@@ -7,6 +7,32 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B2AB0EA1CEA11F6003A42ED /* AnimalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0C61CEA11F6003A42ED /* AnimalModel.xcdatamodeld */; };
+		5B2AB0EB1CEA11F6003A42ED /* BusinessModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0C81CEA11F6003A42ED /* BusinessModel.xcdatamodeld */; };
+		5B2AB0EC1CEA11F6003A42ED /* Business+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0CC1CEA11F6003A42ED /* Business+CoreDataProperties.m */; };
+		5B2AB0ED1CEA11F6003A42ED /* Business.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0CE1CEA11F6003A42ED /* Business.m */; };
+		5B2AB0EE1CEA11F6003A42ED /* Car+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0D01CEA11F6003A42ED /* Car+CoreDataProperties.m */; };
+		5B2AB0EF1CEA11F6003A42ED /* Car.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0D21CEA11F6003A42ED /* Car.m */; };
+		5B2AB0F01CEA11F6003A42ED /* Carnivore+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0D41CEA11F6003A42ED /* Carnivore+CoreDataProperties.m */; };
+		5B2AB0F11CEA11F6003A42ED /* Carnivore.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0D61CEA11F6003A42ED /* Carnivore.m */; };
+		5B2AB0F21CEA11F6003A42ED /* Mammal+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0D81CEA11F6003A42ED /* Mammal+CoreDataProperties.m */; };
+		5B2AB0F31CEA11F6003A42ED /* Mammal.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0DA1CEA11F6003A42ED /* Mammal.m */; };
+		5B2AB0F41CEA11F6003A42ED /* Motorbike+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0DC1CEA11F6003A42ED /* Motorbike+CoreDataProperties.m */; };
+		5B2AB0F51CEA11F6003A42ED /* Motorbike.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0DE1CEA11F6003A42ED /* Motorbike.m */; };
+		5B2AB0F61CEA11F6003A42ED /* Primate+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0E01CEA11F6003A42ED /* Primate+CoreDataProperties.m */; };
+		5B2AB0F71CEA11F6003A42ED /* Primate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0E21CEA11F6003A42ED /* Primate.m */; };
+		5B2AB0F81CEA11F6003A42ED /* Product+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0E41CEA11F6003A42ED /* Product+CoreDataProperties.m */; };
+		5B2AB0F91CEA11F6003A42ED /* Product.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0E61CEA11F6003A42ED /* Product.m */; };
+		5B2AB0FA1CEA11F6003A42ED /* CDSManagedObjectBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0E91CEA11F6003A42ED /* CDSManagedObjectBuilder.m */; };
+		5B2AB10C1CEA1245003A42ED /* CDSTestsAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1031CEA1245003A42ED /* CDSTestsAppDelegate.m */; };
+		5B2AB1101CEA13D8003A42ED /* CDSAuditorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0FB1CEA1245003A42ED /* CDSAuditorTests.m */; };
+		5B2AB1111CEA13DD003A42ED /* CDSCoreDataStackContextTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0FC1CEA1245003A42ED /* CDSCoreDataStackContextTests.m */; };
+		5B2AB1121CEA13F6003A42ED /* CDSCoreDataStackCoordinatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0FD1CEA1245003A42ED /* CDSCoreDataStackCoordinatorTests.m */; };
+		5B2AB1131CEA1404003A42ED /* CDSCoreDataStackCreationTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0FE1CEA1245003A42ED /* CDSCoreDataStackCreationTests.m */; };
+		5B2AB1141CEA140B003A42ED /* CDSFetcherTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0FF1CEA1245003A42ED /* CDSFetcherTests.m */; };
+		5B2AB1151CEA140E003A42ED /* CDSManagedObjectModelDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1001CEA1245003A42ED /* CDSManagedObjectModelDescriptorTests.m */; };
+		5B2AB1161CEA1412003A42ED /* CDSPersistentStoreDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1011CEA1245003A42ED /* CDSPersistentStoreDescriptorTests.m */; };
+		5B2AB1171CEA1419003A42ED /* CDSValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
 		6003F592195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
@@ -19,10 +45,9 @@
 		6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F591195388D20070C39A /* UIKit.framework */; };
 		6003F5BA195388D20070C39A /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6003F5B8195388D20070C39A /* InfoPlist.strings */; };
-		6003F5BC195388D20070C39A /* Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = 6003F5BB195388D20070C39A /* Tests.m */; };
+		638E21B68EDC8E12794D7241 /* libPods-CDSCoreDataSolutions_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A62D5504DD150B5F4352F75 /* libPods-CDSCoreDataSolutions_Example.a */; };
+		6C9340595520BA0A475597E8 /* libPods-CDSCoreDataSolutions_Tests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A56DA6534D24A56B13ED55C /* libPods-CDSCoreDataSolutions_Tests.a */; };
 		873B8AEB1B1F5CCA007FD442 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 873B8AEA1B1F5CCA007FD442 /* Main.storyboard */; };
-		D7208201544E48A9955F4191 /* Pods_CDSCoreDataSolutions_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33DFF0C8BD75D6CB296FB53D /* Pods_CDSCoreDataSolutions_Example.framework */; };
-		F3937661ABAFA50C29203942 /* Pods_CDSCoreDataSolutions_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BC4B36BA3178055F7AF1318 /* Pods_CDSCoreDataSolutions_Tests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +65,49 @@
 		13148A54D63563A12B92F343 /* CDSCoreDataSolutions.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CDSCoreDataSolutions.podspec; path = ../CDSCoreDataSolutions.podspec; sourceTree = "<group>"; };
 		29051DD2921A96A31C7F6061 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2C066D0ABDBF941FDD9C4130 /* Pods-CDSCoreDataSolutions_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDSCoreDataSolutions_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDSCoreDataSolutions_Example/Pods-CDSCoreDataSolutions_Example.release.xcconfig"; sourceTree = "<group>"; };
-		33DFF0C8BD75D6CB296FB53D /* Pods_CDSCoreDataSolutions_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CDSCoreDataSolutions_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5A62D5504DD150B5F4352F75 /* libPods-CDSCoreDataSolutions_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDSCoreDataSolutions_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B2AB0C71CEA11F6003A42ED /* AnimalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalModel.xcdatamodel; sourceTree = "<group>"; };
+		5B2AB0C91CEA11F6003A42ED /* BusinessModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusinessModel.xcdatamodel; sourceTree = "<group>"; };
+		5B2AB0CB1CEA11F6003A42ED /* Business+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Business+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0CC1CEA11F6003A42ED /* Business+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Business+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0CD1CEA11F6003A42ED /* Business.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Business.h; sourceTree = "<group>"; };
+		5B2AB0CE1CEA11F6003A42ED /* Business.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Business.m; sourceTree = "<group>"; };
+		5B2AB0CF1CEA11F6003A42ED /* Car+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Car+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0D01CEA11F6003A42ED /* Car+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Car+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0D11CEA11F6003A42ED /* Car.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Car.h; sourceTree = "<group>"; };
+		5B2AB0D21CEA11F6003A42ED /* Car.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Car.m; sourceTree = "<group>"; };
+		5B2AB0D31CEA11F6003A42ED /* Carnivore+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Carnivore+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0D41CEA11F6003A42ED /* Carnivore+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Carnivore+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0D51CEA11F6003A42ED /* Carnivore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Carnivore.h; sourceTree = "<group>"; };
+		5B2AB0D61CEA11F6003A42ED /* Carnivore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Carnivore.m; sourceTree = "<group>"; };
+		5B2AB0D71CEA11F6003A42ED /* Mammal+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Mammal+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0D81CEA11F6003A42ED /* Mammal+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Mammal+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0D91CEA11F6003A42ED /* Mammal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Mammal.h; sourceTree = "<group>"; };
+		5B2AB0DA1CEA11F6003A42ED /* Mammal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Mammal.m; sourceTree = "<group>"; };
+		5B2AB0DB1CEA11F6003A42ED /* Motorbike+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Motorbike+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0DC1CEA11F6003A42ED /* Motorbike+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Motorbike+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0DD1CEA11F6003A42ED /* Motorbike.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Motorbike.h; sourceTree = "<group>"; };
+		5B2AB0DE1CEA11F6003A42ED /* Motorbike.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Motorbike.m; sourceTree = "<group>"; };
+		5B2AB0DF1CEA11F6003A42ED /* Primate+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Primate+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0E01CEA11F6003A42ED /* Primate+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Primate+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0E11CEA11F6003A42ED /* Primate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Primate.h; sourceTree = "<group>"; };
+		5B2AB0E21CEA11F6003A42ED /* Primate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Primate.m; sourceTree = "<group>"; };
+		5B2AB0E31CEA11F6003A42ED /* Product+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Product+CoreDataProperties.h"; sourceTree = "<group>"; };
+		5B2AB0E41CEA11F6003A42ED /* Product+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Product+CoreDataProperties.m"; sourceTree = "<group>"; };
+		5B2AB0E51CEA11F6003A42ED /* Product.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Product.h; sourceTree = "<group>"; };
+		5B2AB0E61CEA11F6003A42ED /* Product.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Product.m; sourceTree = "<group>"; };
+		5B2AB0E81CEA11F6003A42ED /* CDSManagedObjectBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSManagedObjectBuilder.h; sourceTree = "<group>"; };
+		5B2AB0E91CEA11F6003A42ED /* CDSManagedObjectBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSManagedObjectBuilder.m; sourceTree = "<group>"; };
+		5B2AB0FB1CEA1245003A42ED /* CDSAuditorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSAuditorTests.m; sourceTree = "<group>"; };
+		5B2AB0FC1CEA1245003A42ED /* CDSCoreDataStackContextTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSCoreDataStackContextTests.m; sourceTree = "<group>"; };
+		5B2AB0FD1CEA1245003A42ED /* CDSCoreDataStackCoordinatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSCoreDataStackCoordinatorTests.m; sourceTree = "<group>"; };
+		5B2AB0FE1CEA1245003A42ED /* CDSCoreDataStackCreationTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSCoreDataStackCreationTests.m; sourceTree = "<group>"; };
+		5B2AB0FF1CEA1245003A42ED /* CDSFetcherTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSFetcherTests.m; sourceTree = "<group>"; };
+		5B2AB1001CEA1245003A42ED /* CDSManagedObjectModelDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSManagedObjectModelDescriptorTests.m; sourceTree = "<group>"; };
+		5B2AB1011CEA1245003A42ED /* CDSPersistentStoreDescriptorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSPersistentStoreDescriptorTests.m; sourceTree = "<group>"; };
+		5B2AB1021CEA1245003A42ED /* CDSTestsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSTestsAppDelegate.h; sourceTree = "<group>"; };
+		5B2AB1031CEA1245003A42ED /* CDSTestsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSTestsAppDelegate.m; sourceTree = "<group>"; };
+		5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSValidatorTests.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* CDSCoreDataSolutions_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDSCoreDataSolutions_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		6003F58F195388D20070C39A /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -58,11 +125,10 @@
 		6003F5AF195388D20070C39A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		6003F5B7195388D20070C39A /* Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Tests-Info.plist"; sourceTree = "<group>"; };
 		6003F5B9195388D20070C39A /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6003F5BB195388D20070C39A /* Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Tests.m; sourceTree = "<group>"; };
 		606FC2411953D9B200FFA9A0 /* Tests-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Tests-Prefix.pch"; sourceTree = "<group>"; };
 		873B8AEA1B1F5CCA007FD442 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
+		8A56DA6534D24A56B13ED55C /* libPods-CDSCoreDataSolutions_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDSCoreDataSolutions_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		91C2EA0F5D762ED645200883 /* Pods-CDSCoreDataSolutions_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDSCoreDataSolutions_Tests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDSCoreDataSolutions_Tests/Pods-CDSCoreDataSolutions_Tests.debug.xcconfig"; sourceTree = "<group>"; };
-		9BC4B36BA3178055F7AF1318 /* Pods_CDSCoreDataSolutions_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CDSCoreDataSolutions_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A606651EAC6569657F8EB0CA /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		E8860D6B98E07C3746BFBC05 /* Pods-CDSCoreDataSolutions_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDSCoreDataSolutions_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDSCoreDataSolutions_Example/Pods-CDSCoreDataSolutions_Example.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -75,7 +141,7 @@
 				6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */,
 				6003F592195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F58E195388D20070C39A /* Foundation.framework in Frameworks */,
-				D7208201544E48A9955F4191 /* Pods_CDSCoreDataSolutions_Example.framework in Frameworks */,
+				638E21B68EDC8E12794D7241 /* libPods-CDSCoreDataSolutions_Example.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,13 +152,76 @@
 				6003F5B0195388D20070C39A /* XCTest.framework in Frameworks */,
 				6003F5B2195388D20070C39A /* UIKit.framework in Frameworks */,
 				6003F5B1195388D20070C39A /* Foundation.framework in Frameworks */,
-				F3937661ABAFA50C29203942 /* Pods_CDSCoreDataSolutions_Tests.framework in Frameworks */,
+				6C9340595520BA0A475597E8 /* libPods-CDSCoreDataSolutions_Tests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5B2AB0C41CEA11F6003A42ED /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5B2AB0C51CEA11F6003A42ED /* ManagedObjectModels */,
+				5B2AB0CA1CEA11F6003A42ED /* ManagedObjects */,
+				5B2AB0E71CEA11F6003A42ED /* Model Helpers */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		5B2AB0C51CEA11F6003A42ED /* ManagedObjectModels */ = {
+			isa = PBXGroup;
+			children = (
+				5B2AB0C61CEA11F6003A42ED /* AnimalModel.xcdatamodeld */,
+				5B2AB0C81CEA11F6003A42ED /* BusinessModel.xcdatamodeld */,
+			);
+			path = ManagedObjectModels;
+			sourceTree = "<group>";
+		};
+		5B2AB0CA1CEA11F6003A42ED /* ManagedObjects */ = {
+			isa = PBXGroup;
+			children = (
+				5B2AB0CB1CEA11F6003A42ED /* Business+CoreDataProperties.h */,
+				5B2AB0CC1CEA11F6003A42ED /* Business+CoreDataProperties.m */,
+				5B2AB0CD1CEA11F6003A42ED /* Business.h */,
+				5B2AB0CE1CEA11F6003A42ED /* Business.m */,
+				5B2AB0CF1CEA11F6003A42ED /* Car+CoreDataProperties.h */,
+				5B2AB0D01CEA11F6003A42ED /* Car+CoreDataProperties.m */,
+				5B2AB0D11CEA11F6003A42ED /* Car.h */,
+				5B2AB0D21CEA11F6003A42ED /* Car.m */,
+				5B2AB0D31CEA11F6003A42ED /* Carnivore+CoreDataProperties.h */,
+				5B2AB0D41CEA11F6003A42ED /* Carnivore+CoreDataProperties.m */,
+				5B2AB0D51CEA11F6003A42ED /* Carnivore.h */,
+				5B2AB0D61CEA11F6003A42ED /* Carnivore.m */,
+				5B2AB0D71CEA11F6003A42ED /* Mammal+CoreDataProperties.h */,
+				5B2AB0D81CEA11F6003A42ED /* Mammal+CoreDataProperties.m */,
+				5B2AB0D91CEA11F6003A42ED /* Mammal.h */,
+				5B2AB0DA1CEA11F6003A42ED /* Mammal.m */,
+				5B2AB0DB1CEA11F6003A42ED /* Motorbike+CoreDataProperties.h */,
+				5B2AB0DC1CEA11F6003A42ED /* Motorbike+CoreDataProperties.m */,
+				5B2AB0DD1CEA11F6003A42ED /* Motorbike.h */,
+				5B2AB0DE1CEA11F6003A42ED /* Motorbike.m */,
+				5B2AB0DF1CEA11F6003A42ED /* Primate+CoreDataProperties.h */,
+				5B2AB0E01CEA11F6003A42ED /* Primate+CoreDataProperties.m */,
+				5B2AB0E11CEA11F6003A42ED /* Primate.h */,
+				5B2AB0E21CEA11F6003A42ED /* Primate.m */,
+				5B2AB0E31CEA11F6003A42ED /* Product+CoreDataProperties.h */,
+				5B2AB0E41CEA11F6003A42ED /* Product+CoreDataProperties.m */,
+				5B2AB0E51CEA11F6003A42ED /* Product.h */,
+				5B2AB0E61CEA11F6003A42ED /* Product.m */,
+			);
+			path = ManagedObjects;
+			sourceTree = "<group>";
+		};
+		5B2AB0E71CEA11F6003A42ED /* Model Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				5B2AB0E81CEA11F6003A42ED /* CDSManagedObjectBuilder.h */,
+				5B2AB0E91CEA11F6003A42ED /* CDSManagedObjectBuilder.m */,
+			);
+			path = "Model Helpers";
+			sourceTree = "<group>";
+		};
 		6003F581195388D10070C39A = {
 			isa = PBXGroup;
 			children = (
@@ -121,8 +250,8 @@
 				6003F58F195388D20070C39A /* CoreGraphics.framework */,
 				6003F591195388D20070C39A /* UIKit.framework */,
 				6003F5AF195388D20070C39A /* XCTest.framework */,
-				33DFF0C8BD75D6CB296FB53D /* Pods_CDSCoreDataSolutions_Example.framework */,
-				9BC4B36BA3178055F7AF1318 /* Pods_CDSCoreDataSolutions_Tests.framework */,
+				5A62D5504DD150B5F4352F75 /* libPods-CDSCoreDataSolutions_Example.a */,
+				8A56DA6534D24A56B13ED55C /* libPods-CDSCoreDataSolutions_Tests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -135,6 +264,7 @@
 				873B8AEA1B1F5CCA007FD442 /* Main.storyboard */,
 				6003F5A5195388D20070C39A /* DEMOViewController.h */,
 				6003F5A6195388D20070C39A /* DEMOViewController.m */,
+				5B2AB0C41CEA11F6003A42ED /* Model */,
 				6003F5A8195388D20070C39A /* Images.xcassets */,
 				6003F594195388D20070C39A /* Supporting Files */,
 			);
@@ -156,7 +286,16 @@
 		6003F5B5195388D20070C39A /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				6003F5BB195388D20070C39A /* Tests.m */,
+				5B2AB0FB1CEA1245003A42ED /* CDSAuditorTests.m */,
+				5B2AB0FC1CEA1245003A42ED /* CDSCoreDataStackContextTests.m */,
+				5B2AB0FD1CEA1245003A42ED /* CDSCoreDataStackCoordinatorTests.m */,
+				5B2AB0FE1CEA1245003A42ED /* CDSCoreDataStackCreationTests.m */,
+				5B2AB0FF1CEA1245003A42ED /* CDSFetcherTests.m */,
+				5B2AB1001CEA1245003A42ED /* CDSManagedObjectModelDescriptorTests.m */,
+				5B2AB1011CEA1245003A42ED /* CDSPersistentStoreDescriptorTests.m */,
+				5B2AB1021CEA1245003A42ED /* CDSTestsAppDelegate.h */,
+				5B2AB1031CEA1245003A42ED /* CDSTestsAppDelegate.m */,
+				5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -390,9 +529,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5B2AB0EF1CEA11F6003A42ED /* Car.m in Sources */,
 				6003F59E195388D20070C39A /* DEMOAppDelegate.m in Sources */,
+				5B2AB0F91CEA11F6003A42ED /* Product.m in Sources */,
+				5B2AB0F11CEA11F6003A42ED /* Carnivore.m in Sources */,
 				6003F5A7195388D20070C39A /* DEMOViewController.m in Sources */,
+				5B2AB0F61CEA11F6003A42ED /* Primate+CoreDataProperties.m in Sources */,
+				5B2AB0F51CEA11F6003A42ED /* Motorbike.m in Sources */,
+				5B2AB0F71CEA11F6003A42ED /* Primate.m in Sources */,
 				6003F59A195388D20070C39A /* main.m in Sources */,
+				5B2AB0F31CEA11F6003A42ED /* Mammal.m in Sources */,
+				5B2AB0ED1CEA11F6003A42ED /* Business.m in Sources */,
+				5B2AB0F21CEA11F6003A42ED /* Mammal+CoreDataProperties.m in Sources */,
+				5B2AB0F01CEA11F6003A42ED /* Carnivore+CoreDataProperties.m in Sources */,
+				5B2AB0EE1CEA11F6003A42ED /* Car+CoreDataProperties.m in Sources */,
+				5B2AB10C1CEA1245003A42ED /* CDSTestsAppDelegate.m in Sources */,
+				5B2AB0EC1CEA11F6003A42ED /* Business+CoreDataProperties.m in Sources */,
+				5B2AB0EB1CEA11F6003A42ED /* BusinessModel.xcdatamodeld in Sources */,
+				5B2AB0F41CEA11F6003A42ED /* Motorbike+CoreDataProperties.m in Sources */,
+				5B2AB0FA1CEA11F6003A42ED /* CDSManagedObjectBuilder.m in Sources */,
+				5B2AB0EA1CEA11F6003A42ED /* AnimalModel.xcdatamodeld in Sources */,
+				5B2AB0F81CEA11F6003A42ED /* Product+CoreDataProperties.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -400,7 +557,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6003F5BC195388D20070C39A /* Tests.m in Sources */,
+				5B2AB1111CEA13DD003A42ED /* CDSCoreDataStackContextTests.m in Sources */,
+				5B2AB1171CEA1419003A42ED /* CDSValidatorTests.m in Sources */,
+				5B2AB1141CEA140B003A42ED /* CDSFetcherTests.m in Sources */,
+				5B2AB1131CEA1404003A42ED /* CDSCoreDataStackCreationTests.m in Sources */,
+				5B2AB1101CEA13D8003A42ED /* CDSAuditorTests.m in Sources */,
+				5B2AB1161CEA1412003A42ED /* CDSPersistentStoreDescriptorTests.m in Sources */,
+				5B2AB1151CEA140E003A42ED /* CDSManagedObjectModelDescriptorTests.m in Sources */,
+				5B2AB1121CEA13F6003A42ED /* CDSCoreDataStackCoordinatorTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -513,6 +677,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CDSCoreDataSolutions/CDSCoreDataSolutions-Prefix.pch";
 				INFOPLIST_FILE = "CDSCoreDataSolutions/CDSCoreDataSolutions-Info.plist";
@@ -529,6 +694,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CDSCoreDataSolutions/CDSCoreDataSolutions-Prefix.pch";
 				INFOPLIST_FILE = "CDSCoreDataSolutions/CDSCoreDataSolutions-Info.plist";
@@ -614,6 +780,29 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		5B2AB0C61CEA11F6003A42ED /* AnimalModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5B2AB0C71CEA11F6003A42ED /* AnimalModel.xcdatamodel */,
+			);
+			currentVersion = 5B2AB0C71CEA11F6003A42ED /* AnimalModel.xcdatamodel */;
+			path = AnimalModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+		5B2AB0C81CEA11F6003A42ED /* BusinessModel.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				5B2AB0C91CEA11F6003A42ED /* BusinessModel.xcdatamodel */,
+			);
+			currentVersion = 5B2AB0C91CEA11F6003A42ED /* BusinessModel.xcdatamodel */;
+			path = BusinessModel.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 6003F582195388D10070C39A /* Project object */;
 }

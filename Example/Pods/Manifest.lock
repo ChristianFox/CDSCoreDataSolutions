@@ -1,0 +1,16 @@
+PODS:
+  - CDSCoreDataSolutions (0.2.0)
+
+DEPENDENCIES:
+  - CDSCoreDataSolutions (from `../`)
+
+EXTERNAL SOURCES:
+  CDSCoreDataSolutions:
+    :path: ../
+
+SPEC CHECKSUMS:
+  CDSCoreDataSolutions: e9bb629628d9cadc5bf9f8c6bfb257abd7e33129
+
+PODFILE CHECKSUM: bd7b74d52f6b389b3e7ce197e79219d285c04c83
+
+COCOAPODS: 1.0.0

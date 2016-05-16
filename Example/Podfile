@@ -1,11 +1,11 @@
-use_frameworks!
+
+# use_frameworks!
 
 target 'CDSCoreDataSolutions_Example' do
   pod 'CDSCoreDataSolutions', :path => '../'
 
   target 'CDSCoreDataSolutions_Tests' do
     inherit! :search_paths
-
     
   end
 end

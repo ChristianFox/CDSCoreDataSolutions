@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Carnivore" representedClassName="Carnivore" parentEntity="Mammal" syncable="YES"/>
+    <entity name="Mammal" representedClassName="Mammal" isAbstract="YES" syncable="YES">
+        <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="species" optional="YES" attributeType="String" syncable="YES"/>
+    </entity>
+    <entity name="Primate" representedClassName="Primate" parentEntity="Mammal" syncable="YES"/>
+    <configuration name="MainAnimalConfig">
+        <memberEntity name="Primate"/>
+        <memberEntity name="Carnivore"/>
+        <memberEntity name="Mammal"/>
+    </configuration>
+    <elements>
+        <element name="Mammal" positionX="-27" positionY="18" width="128" height="75"/>
+        <element name="Primate" positionX="18" positionY="63" width="128" height="45"/>
+        <element name="Carnivore" positionX="54" positionY="99" width="128" height="45"/>
+    </elements>
+</model>

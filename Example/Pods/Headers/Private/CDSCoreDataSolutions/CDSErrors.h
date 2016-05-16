@@ -1,0 +1,1 @@
+../../../../../CDSCoreDataSolutions/Classes/CDSErrors.h

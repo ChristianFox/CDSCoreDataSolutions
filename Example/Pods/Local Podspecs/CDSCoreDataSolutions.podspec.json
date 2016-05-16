@@ -1,0 +1,19 @@
+{
+  "name": "CDSCoreDataSolutions",
+  "version": "0.2.0",
+  "summary": "CDSCoreDataSolutions: Core Data Stack & more.",
+  "description": "Core Data Stack & more.",
+  "homepage": "https://github.com/<GITHUB_USERNAME>/CDSCoreDataSolutions",
+  "license": "MIT",
+  "authors": {
+    "Christian Fox": "christianfox890@icloud.com"
+  },
+  "source": {
+    "git": "https://github.com/<GITHUB_USERNAME>/CDSCoreDataSolutions.git",
+    "tag": "0.2.0"
+  },
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source_files": "CDSCoreDataSolutions/Classes/**/*"
+}

@@ -1,0 +1,1 @@
+../../../../../CDSCoreDataSolutions/Classes/CDSPersistentStoreDescriptor.h
