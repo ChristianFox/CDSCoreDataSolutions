@@ -36,6 +36,7 @@ NSString *const kCDSErrorDomain = @"com.KFXTech.CDSCoreDataSolutions";
     
     NSString *localisedDescription;
     
+    // TODO: Rewrite the localised strings to use the more detailed version and so they will always work.
     switch (errorCode) {
         case CDSErrorCodeCDSCoreDataStackIsNull:{
             localisedDescription = NSLocalizedString(@"<ERROR> DBSCoreDataStack is null.", @"The DBSCoreDataStack variable has no value, has not been initilised");

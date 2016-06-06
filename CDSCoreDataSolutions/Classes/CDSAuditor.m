@@ -42,7 +42,8 @@
 //--------------------------------------------------------
 #pragma mark - Entity Audit
 //--------------------------------------------------------
--(BOOL)existsEntityNamed:(NSString *)entityName inModel:(NSManagedObjectModel *)model error:(NSError *__autoreleasing *)error{
+-(BOOL)existsEntityNamed:(NSString *)entityName inModel:(NSManagedObjectModel *)model
+                   error:(NSError *__autoreleasing *)error{
     
     if (![self.validator validateModel:model withError:error]) {
         return NO;
@@ -52,7 +53,8 @@
     return YES;
 }
 
--(BOOL)existsEntityNamed:(NSString *)entityName inContext:(NSManagedObjectContext *)context error:(NSError *__autoreleasing *)error{
+-(BOOL)existsEntityNamed:(NSString *)entityName inContext:(NSManagedObjectContext *)context
+                   error:(NSError *__autoreleasing *)error{
     
     if (![self.validator validateContext:context withError:error]) {
         return NO;
@@ -67,7 +69,7 @@
 -(BOOL)existsAttributeNamed:(NSString*)attributeName
              forEntityNamed:(NSString*)entityName
                   inContext:(NSManagedObjectContext*)context
-                      error:(NSError**)error{
+                      error:(NSError*__autoreleasing*)error{
     
     if (![self.validator validateContext:context withError:error]) {
         return NO;
@@ -83,7 +85,7 @@
 -(BOOL)existsRelationshipNamed:(NSString*)relationshipName
                 forEntityNamed:(NSString*)entityName
                      inContext:(NSManagedObjectContext*)context
-                         error:(NSError**)error{
+                         error:(NSError*__autoreleasing*)error{
     
     if (![self.validator validateContext:context withError:error]) {
         return NO;
@@ -101,7 +103,7 @@
 //--------------------------------------------------------
 -(BOOL)existsContentsForEntityNamed:(NSString*)entityName
                           inContext:(NSManagedObjectContext*)context
-                              error:(NSError**)error{
+                              error:(NSError*__autoreleasing*)error{
     // defensive
     if (![self.validator validateContext:context withError:error]) {
         return NO;

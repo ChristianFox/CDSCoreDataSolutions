@@ -30,23 +30,39 @@
 {
     self = [super init];
     if (self) {
-#if DEBUG
-        self.validate = YES;
-        self.validator = [CDSValidator validator];
-#else
         self.validate = NO;
-#endif
     }
     return self;
 }
+
+
+- (instancetype)initWithValidation:(BOOL)validate{
+    self = [self init];
+    if (self) {
+        self.validate = validate;
+        if (self.validate) {
+            self.validator = [CDSValidator validator];
+        }
+    }
+    return self;
+}
+
+
 +(instancetype)fetcher{
-    CDSFetcher *fetcher = [[self alloc]init];
+    
+    BOOL validate = NO;
+#if DEBUG
+    validate = YES;
+#else
+    validate = NO;
+#endif
+    CDSFetcher *fetcher = [self fetcherWithValidation:validate];
     return fetcher;
 }
 
+
 +(instancetype)fetcherWithValidation:(BOOL)validate{
-    CDSFetcher *fetcher = [self fetcher];
-    fetcher.validate = validate;
+    CDSFetcher *fetcher = [[self alloc]initWithValidation:validate];
     return fetcher;
 }
 

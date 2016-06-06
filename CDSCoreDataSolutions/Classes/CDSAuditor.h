@@ -28,9 +28,9 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @since 0.1.0
  */
--(BOOL)existsEntityNamed:(NSString*)entityName
+-(BOOL)existsEntityNamed:(NSString *)entityName
                  inModel:(NSManagedObjectModel*)model
-                   error:(NSError*_Nullable*)error;
+                   error:(NSError*__nullable*)error;
 
 /**
  *  Determines if the context contains an entity with the specified name.
@@ -45,7 +45,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(BOOL)existsEntityNamed:(NSString*)entityName
                inContext:(NSManagedObjectContext*)context
-                   error:(NSError*_Nullable*)error;
+                   error:(NSError*__nullable*)error;
 
 /**
  *  Determines if an entity has an attribute with the specified name.
@@ -62,7 +62,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)existsAttributeNamed:(NSString*)attributeName
              forEntityNamed:(NSString*)entityName
                   inContext:(NSManagedObjectContext*)context
-                      error:(NSError**)error;
+                      error:(NSError*__nullable*)error;
 
 /**
  *  Determines if an entity has a relationship with the specified name.
@@ -79,7 +79,7 @@ NS_ASSUME_NONNULL_BEGIN
 -(BOOL)existsRelationshipNamed:(NSString*)relationshipName
                 forEntityNamed:(NSString*)entityName
                      inContext:(NSManagedObjectContext*)context
-                         error:(NSError**)error;
+                         error:(NSError*__nullable*)error;
 
 
 //--------------------------------------------------------
@@ -100,7 +100,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(BOOL)existsContentsForEntityNamed:(NSString*)entityName
                           inContext:(NSManagedObjectContext*)context
-                              error:(NSError**)error;
+                              error:(NSError*__nullable*)error;
 
 //--------------------------------------------------------
 #pragma mark - Stack Contents Audit
@@ -116,7 +116,8 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @since 0.1.0
  */
--(BOOL)existsContentsInStack:(CDSCoreDataStack*)stack error:(NSError **)error;7
+-(BOOL)existsContentsInStack:(CDSCoreDataStack*)stack
+                       error:(NSError *__nullable*)error;
 
 
 //--------------------------------------------------------
@@ -137,7 +138,7 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(NSUInteger)countOfManagedObjectsForEntityName:(NSString*)entityName
                                       inContext:(NSManagedObjectContext*)context
-                                          error:(NSError**)error;
+                                          error:(NSError*__nullable*)error;
 
 /**
  *  Determines how many managed objects exist in the given stack for the given entity name.
@@ -150,7 +151,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @since 0.1.0
  */
 -(NSUInteger)countOfManagedObjectsInStack:(CDSCoreDataStack*)stack
-                                    error:(NSError**)error;
+                                    error:(NSError*__nullable*)error;
 
 /**
  *  Determines how many managed objects exist in the given CDSCoreDataStack for each entity defined in all the NSManagedObjectModels
@@ -163,7 +164,7 @@ NS_ASSUME_NONNULL_BEGIN
  *  @since 0.1.0
  */
 -(NSDictionary*)countsKeyedByNamesOfEntitiesInStack:(CDSCoreDataStack*)stack
-                                              error:(NSError**)error;
+                                              error:(NSError*__nullable*)error;
 
 
 
