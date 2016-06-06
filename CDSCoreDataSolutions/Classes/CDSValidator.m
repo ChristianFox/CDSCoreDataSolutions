@@ -23,6 +23,7 @@
 -(BOOL)validateStack:(nullable CDSCoreDataStack*)stack
            withError:(NSError*_Nullable*)error{
     
+    // TODO: Should check all stack conponents (store, context etc)
     if (stack == nil) {
         if (error) {
             *error = [CDSErrors errorForErrorCode:CDSErrorCodeCDSCoreDataStackIsNull
