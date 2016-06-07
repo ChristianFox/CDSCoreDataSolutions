@@ -38,7 +38,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @since 0.1.0
  */
-+(instancetype)fetcherWithValidation:(BOOL)validate;
++(instancetype)fetcherWithValidation:(BOOL)validate; 
 
 //--------------------------------------------------------
 #pragma mark - Fetch all

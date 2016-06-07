@@ -12,6 +12,11 @@
 NS_ASSUME_NONNULL_BEGIN
 @interface CDSAuditor : NSObject
 
+
+//--------------------------------------------------------
+#pragma mark - Initilisation
+//--------------------------------------------------------
+/// Returns an instance of CDSAuditor
 +(instancetype)auditor;
 
 //--------------------------------------------------------

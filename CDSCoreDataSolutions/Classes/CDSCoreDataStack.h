@@ -28,7 +28,7 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)sharedStack;
 
 /// Returns an instance of CDSCoreDataStack. Actual stack is not configured yet, you need to call configure method separately.
--(instancetype)init;
+-(instancetype)init NS_DESIGNATED_INITIALIZER;
 
 /**
  *  Configure the core data stack (model, context, store/s & store coordinator). Call this method after initilising an instance using init or sharedStack. Pass in descriptors or don't. Completion block will be called once the entire stack is initilised. Some of the work will be done on a background queue and the completion block is called from that queue.

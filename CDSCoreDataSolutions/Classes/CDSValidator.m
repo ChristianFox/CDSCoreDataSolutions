@@ -9,9 +9,14 @@
 #import "CDSValidator.h"
 #import "CDSErrors.h"
 
+#import "CDSCoreDataStack.h"
+
 @implementation CDSValidator
 
 
+//--------------------------------------------------------
+#pragma mark - Initilisation
+//--------------------------------------------------------
 +(instancetype)validator{
     return [[self alloc]init];
 }
@@ -19,27 +24,31 @@
 
 
 
-// Validate Stack
+//--------------------------------------------------------
+#pragma mark - Validate Stack, Context, Model
+//--------------------------------------------------------
 -(BOOL)validateStack:(nullable CDSCoreDataStack*)stack
            withError:(NSError*_Nullable*)error{
     
-    // TODO: Should check all stack conponents (store, context etc)
     if (stack == nil) {
         if (error) {
             *error = [CDSErrors errorForErrorCode:CDSErrorCodeCDSCoreDataStackIsNull
                                        withObject:nil];
         }
         return NO;
+    }else if (![self validateContext:stack.managedObjectContext
+                           withError:error]){
+        return NO;
+    }else if (![self validateModel:stack.managedObjectModel
+                         withError:error]){
+        return NO;
     }
     return YES;
 }
 
-
-
-
-
 -(BOOL)validateContext:(NSManagedObjectContext *)context
              withError:(NSError *__autoreleasing *)error{
+    
     if (context == nil) {
         if (error != nil) {
             *error = [CDSErrors errorForErrorCode:CDSErrorCodeManagedObjectContextIsNull
@@ -62,6 +71,11 @@
     return YES;
 }
 
+
+
+//--------------------------------------------------------
+#pragma mark - Validate Objects
+//--------------------------------------------------------
 -(BOOL)validateString:(NSString *)string
             withError:(NSError *__autoreleasing *)error{
     if (string == nil) {
@@ -142,7 +156,9 @@ isCorrectForAttributeNamed:(NSString *)attributeName
 }
 
 
-
+//--------------------------------------------------------
+#pragma mark - Validate Entity
+//--------------------------------------------------------
 -(BOOL)validateEntityName:(NSString *)entityName
                 inContext:(NSManagedObjectContext *)context
                 withError:(NSError *__autoreleasing *)error{
@@ -204,6 +220,10 @@ isCorrectForAttributeNamed:(NSString *)attributeName
     
 }
 
+
+//--------------------------------------------------------
+#pragma mark - Validate KeyPaths (Attributes & Relationships)
+//--------------------------------------------------------
 -(BOOL)validateKeyPath:(NSString *)keyPath
          forEntityName:(NSString *)entityName
              inContext:(NSManagedObjectContext *)context
@@ -240,152 +260,9 @@ isCorrectForAttributeNamed:(NSString *)attributeName
 }
 
 
--(BOOL)validateStrings:(NSArray *)strings
-           forKeyPaths:(NSArray *)keyPaths
-         forEntityName:(NSString *)entityName
-             inContext:(NSManagedObjectContext *)context
-             withError:(NSError *__autoreleasing *)error{
-    
-    if (strings == nil) {
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsNull
-                                       withObject:@"'strings'"];
-        }
-        return NO;
-    }else if (strings.count == 0){
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsEmpty
-                                       withObject:@"'strings'"];
-        }
-        return NO;
-    }else if (keyPaths == nil) {
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsNull
-                                       withObject:@"'keyPaths'"];
-        }
-        return NO;
-    }else if (keyPaths.count == 0){
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsEmpty
-                                       withObject:@"'keyPaths'"];
-        }
-        return NO;
-        
-    }else if (strings.count != keyPaths.count) {
-        if (error) {
-            
-            NSString *message = [NSString stringWithFormat:@"KeyPaths == %lu and Strings == %lu",(unsigned long)keyPaths.count, (unsigned long)strings.count];
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayCountsAreNotEqual
-                                       withObject:message];
-        }
-        return NO;
-    }
-    
-    // validation
-    BOOL validationSuccess = NO;
-    for (int idx = 0; idx < strings.count; idx++) {
-        // strings
-        BOOL isStringValid = NO;
-        isStringValid = [self validateString:strings[idx]
-                                   withError:error];
-        if (!isStringValid) {
-            validationSuccess = NO;
-            break;
-        }
-        
-        // keypaths
-        BOOL isKeyPathValid = NO;
-        isKeyPathValid = [self validateKeyPath:keyPaths[idx]
-                                 forEntityName:entityName
-                                     inContext:context
-                                     withError:error];
-        if (!isKeyPathValid) {
-            validationSuccess = NO;
-            break;
-        }
-        
-        // both
-        if (isStringValid && isKeyPathValid) {
-            validationSuccess = YES;
-        }
-        
-    }
-    return validationSuccess;
-}
-
--(BOOL)validateNumbers:(NSArray *)numbers
-           forKeyPaths:(NSArray *)keyPaths
-         forEntityName:(NSString *)entityName
-             inContext:(NSManagedObjectContext *)context
-             withError:(NSError *__autoreleasing *)error{
-    // defensive
-    if (numbers == nil) {
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsNull
-                                       withObject:@"'numbers'"];
-        }
-        return NO;
-    }else if (numbers.count == 0){
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsEmpty
-                                       withObject:@"'numbers'"];
-        }
-        return NO;
-    }else if (keyPaths == nil) {
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsNull
-                                       withObject:@"'keyPaths'"];
-        }
-        return NO;
-    }else if (keyPaths.count == 0){
-        if (error) {
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayIsEmpty
-                                       withObject:@"'keyPaths'"];
-        }
-        return NO;
-        
-    }else if (numbers.count != keyPaths.count) {
-        if (error) {
-            NSString *message = [NSString stringWithFormat:@"keyPaths == %lu and numbers == %lu",(unsigned long)keyPaths.count, (unsigned long)numbers.count];
-            *error = [CDSErrors errorForErrorCode:CDSErrorCodeArrayCountsAreNotEqual
-                                       withObject:message];
-        }
-        return NO;
-    }
-    
-    // validation
-    BOOL validationSuccess = NO;
-    for (int idx = 0; idx < numbers.count; idx++) {
-        // strings
-        BOOL isNumberValid = NO;
-        isNumberValid = [self validateNumber:numbers[idx]
-                                   withError:error];
-        if (!isNumberValid) {
-            validationSuccess = NO;
-            break;
-        }
-        
-        // keypaths
-        BOOL isKeyPathValid = NO;
-        isKeyPathValid = [self validateKeyPath:keyPaths[idx]
-                                 forEntityName:entityName
-                                     inContext:context
-                                     withError:error];
-        if (!isKeyPathValid) {
-            validationSuccess = NO;
-            break;
-        }
-        
-        // both
-        if (isNumberValid && isKeyPathValid) {
-            validationSuccess = YES;
-        }
-    }
-    return validationSuccess;
-    
-}
-
-
+//--------------------------------------------------------
+#pragma mark - Validate Collections
+//--------------------------------------------------------
 -(BOOL)validateObjects:(NSArray *)objects forKeyPaths:(NSArray *)keyPaths forEntityName:(NSString *)entityName inContext:(NSManagedObjectContext *)context withError:(NSError *__autoreleasing *)error{
     // defensive
     if (objects == nil) {
@@ -444,7 +321,7 @@ isCorrectForAttributeNamed:(NSString *)attributeName
                 return NO;
             }
         }
-        
+                
         if (!isObjectValid) {
             validationSuccess = NO;
             break;
