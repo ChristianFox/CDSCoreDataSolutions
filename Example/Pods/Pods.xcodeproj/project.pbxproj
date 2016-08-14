@@ -13,6 +13,9 @@
 		31E28339F7A6B3721278FB3A7566D81A /* CDSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 136A819E7D359312B9B5725B05BB9386 /* CDSCoreDataStack.m */; };
 		3AB560DA7E4EC2C72F5FBB9A2229FE4D /* CDSFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 585F6215E2058941D27DB61972366D36 /* CDSFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		5B5877883F0FD90DA1CD8BA30C35856B /* Pods-CDSCoreDataSolutions_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A41F3D403822F4896C6B998CFC5A6 /* Pods-CDSCoreDataSolutions_Example-dummy.m */; };
+		5B680FAC1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B680FAA1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B680FAD1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B680FAB1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.m */; };
+		5B680FAF1D60D94F006F25F0 /* CDSCoreDataStack_PrivateExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B680FAE1D60D94F006F25F0 /* CDSCoreDataStack_PrivateExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		7850129A91749536E5292E430D290BC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
 		809E831D12D6E426ABB126866C670C1E /* CDSValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 64D335C1BD90AB117C2E54E13BFA2EB1 /* CDSValidator.m */; };
 		84A65A55E921C2E919796B74E6B694BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
@@ -54,6 +57,9 @@
 		41D84C94C3D0D5666D6EE1EA8A258EC2 /* Pods-CDSCoreDataSolutions_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CDSCoreDataSolutions_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
 		585F6215E2058941D27DB61972366D36 /* CDSFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSFetcher.h; sourceTree = "<group>"; };
 		592061C4B4E72CE9F20E1B9523284664 /* Pods-CDSCoreDataSolutions_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CDSCoreDataSolutions_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		5B680FAA1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CDSCoreDataStack+ForUnitTesting.h"; sourceTree = "<group>"; };
+		5B680FAB1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CDSCoreDataStack+ForUnitTesting.m"; sourceTree = "<group>"; };
+		5B680FAE1D60D94F006F25F0 /* CDSCoreDataStack_PrivateExtension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataStack_PrivateExtension.h; sourceTree = "<group>"; };
 		5EB7726379E690BFAFFE6F13B9E3932F /* libPods-CDSCoreDataSolutions_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDSCoreDataSolutions_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		64D335C1BD90AB117C2E54E13BFA2EB1 /* CDSValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSValidator.m; sourceTree = "<group>"; };
 		66607EF46C0F6F1DFFB8F4FCF7DB825E /* Pods-CDSCoreDataSolutions_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CDSCoreDataSolutions_Example.debug.xcconfig"; sourceTree = "<group>"; };
@@ -193,6 +199,9 @@
 			children = (
 				23E736097F194F432DBCEEA6997F3373 /* CDSAuditor.h */,
 				B1141A6DC3C694E53CC001DB6322D5D3 /* CDSAuditor.m */,
+				5B680FAE1D60D94F006F25F0 /* CDSCoreDataStack_PrivateExtension.h */,
+				5B680FAA1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.h */,
+				5B680FAB1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.m */,
 				750599947CEB0E93DFE27BC72F92104D /* CDSCoreDataStack.h */,
 				136A819E7D359312B9B5725B05BB9386 /* CDSCoreDataStack.m */,
 				007CE32310E64AE5E95A796EA0190818 /* CDSDefinitions.h */,
@@ -259,8 +268,10 @@
 				DA178A94BCCC08CFE4B640808F2DFDF7 /* CDSErrors.h in Headers */,
 				3AB560DA7E4EC2C72F5FBB9A2229FE4D /* CDSFetcher.h in Headers */,
 				F71BCBAD672D61327D6E2F4E3C14A52F /* CDSManagedObjectModelDescriptor.h in Headers */,
+				5B680FAC1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.h in Headers */,
 				A9CFCF557AFC3529266011370E608375 /* CDSPersistentStoreDescriptor.h in Headers */,
 				B7FB9CE9FBA739B17A6C66D7BEB18784 /* CDSValidator.h in Headers */,
+				5B680FAF1D60D94F006F25F0 /* CDSCoreDataStack_PrivateExtension.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -373,6 +384,7 @@
 				D48A110BAA93D5ECEFAABEAF1F65BC48 /* CDSErrors.m in Sources */,
 				A200C365010A4687459E94E4257EAD81 /* CDSFetcher.m in Sources */,
 				30EC39B15A54DBF7AFEE3630CB869138 /* CDSManagedObjectModelDescriptor.m in Sources */,
+				5B680FAD1D60D8D3006F25F0 /* CDSCoreDataStack+ForUnitTesting.m in Sources */,
 				B5F3727187C8247AF883B46D4A6581D8 /* CDSPersistentStoreDescriptor.m in Sources */,
 				809E831D12D6E426ABB126866C670C1E /* CDSValidator.m in Sources */,
 			);

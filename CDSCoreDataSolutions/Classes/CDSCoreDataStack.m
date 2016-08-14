@@ -2,22 +2,18 @@
 //  CDSCoreDataStack.m
 //  Pods
 //
-//  Created by Eyeye on 06/05/2016.
+//  Created by Christian Fox on 06/05/2016.
 //
 //
 
 #import "CDSCoreDataStack.h"
+#import "CDSCoreDataStack_PrivateExtension.h"
 //
 #import "CDSPersistentStoreDescriptor.h"
 #import "CDSManagedObjectModelDescriptor.h"
-#import "CDSErrors.h"
 
 @interface CDSCoreDataStack ()
 
-@property (strong,nonatomic,readwrite) NSManagedObjectModel *managedObjectModel;
-@property (strong,nonatomic,readwrite) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (strong,nonatomic) NSManagedObjectContext *publicContext;
-@property (strong,nonatomic) NSManagedObjectContext *privateContext;
 
 @end
 
@@ -59,7 +55,7 @@
                                completion:(CDSBooleanCompletionHandler)handlerOrNil{
     
     // ## Destroy local stack ##
-    // ??? We may have problems if other classes are holding a reference to any of these.
+    // ??? We will have problems if other classes are holding a reference to any of these.
     self.managedObjectModel = nil;
     self.persistentStoreCoordinator = nil;
     self.publicContext = nil;
@@ -182,27 +178,7 @@
 
 }
 
--(void)clearContextWithCompletion:(CDSBooleanCompletionHandler)handlerOrNil{
-    
-    if (self.publicContext == nil) {
-        
-        NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeManagedObjectContextIsNull
-                                                withObject:nil];
-        if (handlerOrNil != nil) {
-            handlerOrNil(NO,error);
-        }
-    }else{
-        
-        // set to nil to clear and then build new
-        self.publicContext = nil;
-        self.publicContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        self.publicContext.parentContext = self.privateContext;
 
-        if (handlerOrNil != nil) {
-            handlerOrNil(YES,nil);
-        }
-    }
-}
 
 
 //--------------------------------------------------------
@@ -382,8 +358,6 @@
 //======================================================
 #pragma mark - ** Private Methods **
 //======================================================
-
-
 
 //--------------------------------------------------------
 #pragma mark - Configuration Helpers

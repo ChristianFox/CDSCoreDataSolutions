@@ -10,6 +10,7 @@
 #import <CDSCoreDataSolutions/CDSCoreDataStack.h>
 #import <CDSCoreDataSolutions/CDSManagedObjectModelDescriptor.h>
 #import <CDSCoreDataSolutions/CDSPersistentStoreDescriptor.h>
+#import <CDSCoreDataSolutions/CDSCoreDataStack+ForUnitTesting.h>
 #import "CDSManagedObjectBuilder.h"
 
 

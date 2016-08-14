@@ -676,7 +676,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:nil
@@ -686,7 +686,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:nil
@@ -700,7 +700,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"FakeProduct"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -710,7 +710,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"FakeProduct"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -724,7 +724,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:nil
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -734,7 +734,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:nil
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -748,7 +748,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"FakeKeyPath",@"Laces"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -758,7 +758,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"FakeKeyPath",@"Laces"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -773,7 +773,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:nil
+    isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -783,7 +783,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:nil
+    isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -797,7 +797,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"",@""]
+    isValid = [self.sut validateObjects:@[@"",@""]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -807,7 +807,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"",@""]
+    isValid = [self.sut validateObjects:@[@"",@""]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -821,7 +821,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"Nike Air"]
+    isValid = [self.sut validateObjects:@[@"Nike Air"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -831,7 +831,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super Duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super Duper"]
                             forKeyPaths:@[@"name"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -847,7 +847,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -857,7 +857,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateStrings:@[@"Nike Air",@"Super duper"]
+    isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -877,7 +877,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:@[@2123]
+    isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
                               inContext:nil
@@ -887,7 +887,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:@[@9999]
+    isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
                               inContext:nil
@@ -900,7 +900,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:@[@2123]
+    isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:nil
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -910,7 +910,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:@[@9999]
+    isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:nil
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -924,7 +924,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:@[@2123]
+    isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:nil
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -934,7 +934,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:@[@9999]
+    isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:nil
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -947,7 +947,7 @@
 -(void)testValidateNumbersAndKeyPaths_WithUnrecognisedKeyPaths_ShouldReturnFALSE{
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:@[@2123]
+    isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:@[@"asffgname"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -957,7 +957,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:@[@9999]
+    isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:@[@"psfds.rice"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -971,7 +971,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:nil
+    isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"priceInPence",@"name"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -981,7 +981,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:nil
+    isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -995,7 +995,7 @@
 -(void)testValidateNumbersAndKeyPaths_WithUnpairedNumbersAndKeys_ShouldReturnFALSE{
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:@[@2500]
+    isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"priceInPence",@"name"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -1005,7 +1005,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:@[@2342,@"hello!"]
+    isValid = [self.sut validateObjects:@[@2342,@"hello!"]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -1019,7 +1019,7 @@
     
     // WHEN
     BOOL isValid = NO;
-    isValid = [self.sut validateNumbers:@[@2500]
+    isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext
@@ -1029,7 +1029,7 @@
     
     // WHEN with error
     NSError *error;
-    isValid = [self.sut validateNumbers:@[@2500]
+    isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
                               inContext:[CDSCoreDataStack sharedStack].managedObjectContext

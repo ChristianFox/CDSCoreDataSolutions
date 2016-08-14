@@ -2,7 +2,7 @@
 //  CDSCoreDataStack.h
 //  Pods
 //
-//  Created by Eyeye on 06/05/2016.
+//  Created by Christian Fox on 06/05/2016.
 //
 //
 
@@ -52,11 +52,6 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)saveWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
-/**
- * Clears the current context. Just sets the context property to nil and created a new one.
- * @param completionHandler: Provides a BOOL for success status and an NSError object which may be nil
- */
--(void)clearContextWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 
 //--------------------------------------------------------
@@ -75,13 +70,13 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)deleteAllPersistentStoresWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 /// Creates persistentStore/s and adds to self.persistentStoreCoordinator. Works on background queue. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"
--(void)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors completionHandler:(CDSBooleanCompletionHandler)handlerOrNil;
+-(void)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 //--------------------------------------------------------
 #pragma mark - Managed Object Model
 //--------------------------------------------------------
 /// Creates the managedObjectModel. If model descriptors are not nil then those are used to create models and then merge into 1 model. If descriptors are nil then we merge any models from the main bundle.
--(void)configureManagedObjectModelWithModelDescriptors:(nullable NSArray<CDSManagedObjectModelDescriptor *> *)modelDescriptors completionHandler:(CDSBooleanCompletionHandler)handlerOrNil;
+-(void)configureManagedObjectModelWithModelDescriptors:(nullable NSArray<CDSManagedObjectModelDescriptor *> *)modelDescriptors completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 @end
 NS_ASSUME_NONNULL_END
