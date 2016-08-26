@@ -32,14 +32,16 @@
     {
        
         NSLog(@"<CONFIGURED> SharedInstance of Stack has been configured with success: %d",success);
-        
-        [CDSManagedObjectBuilder buildAndInsertBusinesses:5
-                                              intoContext:stack.managedObjectContext];
-        [CDSManagedObjectBuilder buildAndInsertCars:5
-                                        intoContext:stack.managedObjectContext];
-        [CDSManagedObjectBuilder buildAndInsertMotorbikes:5
-                                              intoContext:stack.managedObjectContext];
-        
+        dispatch_async(dispatch_get_main_queue(), ^{
+            
+            [CDSManagedObjectBuilder buildAndInsertBusinesses:5
+                                                  intoContext:stack.managedObjectContext];
+            [CDSManagedObjectBuilder buildAndInsertCars:5
+                                            intoContext:stack.managedObjectContext];
+            [CDSManagedObjectBuilder buildAndInsertMotorbikes:5
+                                                  intoContext:stack.managedObjectContext];
+            
+        });
         dispatch_semaphore_signal(semaphore);
     
     }];

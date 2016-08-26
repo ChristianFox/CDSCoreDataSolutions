@@ -7,11 +7,13 @@
 //
 
 #import "DEMOAppDelegate.h"
+#import <CDSCoreDataSolutions/CDSCoreDataSolutions.h>
 
 @implementation DEMOAppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
+
     NSSetUncaughtExceptionHandler(&uncaughtExceptionHandler);
     return YES;
 }
