@@ -12,4 +12,12 @@
 
 // Insert code here to add functionality to your managed object subclass
 
+
+-(NSString *)description{
+    
+    return [NSString stringWithFormat:@"<MANOBJ> Mammal: name = %@, species = %@",
+            self.name,self.species];
+    
+}
+
 @end

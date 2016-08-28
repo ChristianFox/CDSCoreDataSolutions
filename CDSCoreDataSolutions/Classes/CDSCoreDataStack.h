@@ -11,15 +11,15 @@
 @class CDSPersistentStoreDescriptor;
 @class CDSManagedObjectModelDescriptor;
 #import "CDSDefinitions.h"
+#import "CDSLoggingDelegate.h"
 
 NS_ASSUME_NONNULL_BEGIN
 @interface CDSCoreDataStack : NSObject
 
-
+@property (weak, nonatomic) id<CDSLoggingDelegate> loggingDelegate;
 @property (strong,nonatomic,readonly) NSManagedObjectModel *managedObjectModel;
 @property (strong,nonatomic,readonly) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (strong,nonatomic,readonly) NSManagedObjectContext *managedObjectContext;
-
+@property (strong,nonatomic,readonly) NSManagedObjectContext *mainQueueContext;
 
 //--------------------------------------------------------
 #pragma mark - Initilise & Configure
@@ -47,12 +47,18 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - ManagedObjectContext
 //--------------------------------------------------------
 /**
+ * Create a new NSManagedObjectContext with NSPrivateQueueConcurrencyType.
+ * You should use one of these to do any long running non-UI related work and then call save on that context to have it's changes propagated to its parent - which is the stack's root context with private concurrency type that has direct access to the store coordinator.
+ * @return A newly instantiated context
+ */
+-(NSManagedObjectContext*)newBackgroundContext;
+
+
+/**
  * If changes have occurred then save is called on the context
  * @param completionHandler: Provides a BOOL for success status and an NSError object which may be nil
  */
 -(void)saveWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
-
-
 
 //--------------------------------------------------------
 #pragma mark - Persistent Store

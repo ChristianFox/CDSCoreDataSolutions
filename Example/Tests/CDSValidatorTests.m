@@ -108,7 +108,7 @@
     // WHEN
     NSError *error;
     BOOL isValid = NO;
-    isValid = [self.sut validateContext:[CDSCoreDataStack sharedStack].managedObjectContext
+    isValid = [self.sut validateContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertTrue(isValid);
@@ -327,7 +327,7 @@
     isValid = [self.sut validateObject:nil
             isCorrectForAttributeNamed:@"priceInPence"
                          forEntityName:@"Product"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -337,7 +337,7 @@
     isValid = [self.sut validateObject:nil
             isCorrectForAttributeNamed:@"priceInPence"
                          forEntityName:@"Product"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -375,7 +375,7 @@
     isValid = [self.sut validateObject:@999999
             isCorrectForAttributeNamed:@"priceInPence"
                          forEntityName:nil
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -385,7 +385,7 @@
     isValid = [self.sut validateObject:@999999
             isCorrectForAttributeNamed:@"priceInPence"
                          forEntityName:@"tumbleweed"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -399,7 +399,7 @@
     isValid = [self.sut validateObject:@999999
             isCorrectForAttributeNamed:@"nil-nil"
                          forEntityName:@"Product"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -409,7 +409,7 @@
     isValid = [self.sut validateObject:@999999
             isCorrectForAttributeNamed:nil
                          forEntityName:@"Product"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -423,7 +423,7 @@
     isValid = [self.sut validateObject:@999999
             isCorrectForAttributeNamed:@"priceInPence"
                          forEntityName:@"Product"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:nil];
     // THEN
     XCTAssertTrue(isValid);
@@ -433,7 +433,7 @@
     isValid = [self.sut validateObject:@999999
             isCorrectForAttributeNamed:@"priceInPence"
                          forEntityName:@"Product"
-                             inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                             inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                              withError:&error];
     // THEN
     XCTAssertTrue(isValid);
@@ -449,7 +449,7 @@
     // WHEN
     BOOL isValid = NO;
     isValid = [self.sut validateEntityName:@"Fakington"
-                                 inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                                 inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                                  withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -457,7 +457,7 @@
     // WHEN with error
     NSError *error;
     isValid = [self.sut validateEntityName:nil
-                                 inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                                 inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                                  withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -490,7 +490,7 @@
     // WHEN
     BOOL isValid = NO;
     isValid = [self.sut validateEntityName:@"Business"
-                                 inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                                 inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                                  withError:nil];
     // THEN
     XCTAssertTrue(isValid);
@@ -498,7 +498,7 @@
     // WHEN with error
     NSError *error;
     isValid = [self.sut validateEntityName:@"Business"
-                                 inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                                 inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                                  withError:&error];
     // THEN
     XCTAssertTrue(isValid);
@@ -606,7 +606,7 @@
     BOOL isValid = NO;
     isValid = [self.sut validateKeyPath:@"name"
                           forEntityName:@"Bum"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -615,7 +615,7 @@
     NSError *error;
     isValid = [self.sut validateKeyPath:@"name"
                           forEntityName:@"Nob"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -629,7 +629,7 @@
     BOOL isValid = NO;
     isValid = [self.sut validateKeyPath:@"ladyparts.boobies"
                           forEntityName:@"Business"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -638,7 +638,7 @@
     NSError *error;
     isValid = [self.sut validateKeyPath:@"boyparts.winkle"
                           forEntityName:@"Business"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -651,7 +651,7 @@
     BOOL isValid = NO;
     isValid = [self.sut validateKeyPath:@"employees"
                           forEntityName:@"Business"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertTrue(isValid);
@@ -660,7 +660,7 @@
     NSError *error;
     isValid = [self.sut validateKeyPath:@"employees"
                           forEntityName:@"Business"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertTrue(isValid);
@@ -703,7 +703,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"FakeProduct"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -713,7 +713,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"FakeProduct"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -727,7 +727,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:nil
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -737,7 +737,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:nil
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -751,7 +751,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"FakeKeyPath",@"Laces"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -761,7 +761,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"FakeKeyPath",@"Laces"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -776,7 +776,7 @@
     isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -786,7 +786,7 @@
     isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -800,7 +800,7 @@
     isValid = [self.sut validateObjects:@[@"",@""]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -810,7 +810,7 @@
     isValid = [self.sut validateObjects:@[@"",@""]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -824,7 +824,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -834,7 +834,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super Duper"]
                             forKeyPaths:@[@"name"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -850,7 +850,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertTrue(isValid);
@@ -860,7 +860,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper"]
                             forKeyPaths:@[@"name",@"blurb"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertTrue(isValid);
@@ -903,7 +903,7 @@
     isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:nil
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -913,7 +913,7 @@
     isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:nil
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -927,7 +927,7 @@
     isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:nil
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -937,7 +937,7 @@
     isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:nil
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -950,7 +950,7 @@
     isValid = [self.sut validateObjects:@[@2123]
                             forKeyPaths:@[@"asffgname"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -960,7 +960,7 @@
     isValid = [self.sut validateObjects:@[@9999]
                             forKeyPaths:@[@"psfds.rice"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -974,7 +974,7 @@
     isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"priceInPence",@"name"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -984,7 +984,7 @@
     isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -998,7 +998,7 @@
     isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"priceInPence",@"name"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1008,7 +1008,7 @@
     isValid = [self.sut validateObjects:@[@2342,@"hello!"]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1022,7 +1022,7 @@
     isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertTrue(isValid);
@@ -1032,7 +1032,7 @@
     isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertTrue(isValid);
@@ -1080,7 +1080,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Productasdas"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1090,7 +1090,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Producttesco"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1104,7 +1104,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:nil
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1114,7 +1114,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:nil
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1128,7 +1128,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:@[@"not.a.keypath",@"product.Description",@"price.of.milk"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1138,7 +1138,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:@[@"not.a.keypath",@"product.Description",@"price.of.milk"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1152,7 +1152,7 @@
     isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1162,7 +1162,7 @@
     isValid = [self.sut validateObjects:nil
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1176,7 +1176,7 @@
     isValid = [self.sut validateObjects:@[[NSDate date],@2500,self]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1186,7 +1186,7 @@
     isValid = [self.sut validateObjects:@[[NSDate date],@2500,self]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1200,7 +1200,7 @@
     isValid = [self.sut validateObjects:@[@2500]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertFalse(isValid);
@@ -1210,7 +1210,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air"]
                             forKeyPaths:@[@"name",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertFalse(isValid);
@@ -1223,7 +1223,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:nil];
     // THEN
     XCTAssertTrue(isValid);
@@ -1233,7 +1233,7 @@
     isValid = [self.sut validateObjects:@[@"Nike Air",@"Super duper",@2500]
                             forKeyPaths:@[@"name",@"blurb",@"priceInPence"]
                           forEntityName:@"Product"
-                              inContext:[CDSCoreDataStack sharedStack].managedObjectContext
+                              inContext:[CDSCoreDataStack sharedStack].mainQueueContext
                               withError:&error];
     // THEN
     XCTAssertTrue(isValid);

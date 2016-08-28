@@ -112,16 +112,16 @@
     
     BOOL exists = NO;
     exists = [self.sut existsEntityNamed:@"InvalidEntity"
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsEntityNamed:@"FakeEntity"
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:nil];
     XCTAssertFalse(exists);
     NSString *entityName;
     exists = [self.sut existsEntityNamed:entityName
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:nil];
     XCTAssertFalse(exists);
 }
@@ -130,20 +130,20 @@
     
     BOOL exists = NO;
     exists = [self.sut existsEntityNamed:@"Business"
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:nil];
     XCTAssertTrue(exists);
     exists = [self.sut existsEntityNamed:@"Product"
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:nil];
     XCTAssertTrue(exists);
     NSError *error;
     exists = [self.sut existsEntityNamed:@"Car"
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:&error];
     XCTAssertTrue(exists);
     exists = [self.sut existsEntityNamed:@"Motorbike"
-                               inContext:self.stack.managedObjectContext
+                               inContext:self.stack.mainQueueContext
                                    error:&error];
     XCTAssertTrue(exists);
     XCTAssertNil(error);
@@ -168,22 +168,22 @@
     BOOL exists = NO;
     exists = [self.sut existsAttributeNamed:@"namesake"
                              forEntityNamed:@"Business"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsAttributeNamed:@"prick"
                              forEntityNamed:@"Product"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsAttributeNamed:@"throttle"
                              forEntityNamed:@"Car"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsAttributeNamed:@"door"
                              forEntityNamed:@"Motorbike"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertFalse(exists);
 }
@@ -196,12 +196,12 @@
     BOOL exists = NO;
     exists = [self.sut existsAttributeNamed:@"name"
                              forEntityNamed:@"Busness"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsAttributeNamed:@"price"
                              forEntityNamed:@"Truck"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertFalse(exists);
 }
@@ -211,23 +211,23 @@
     BOOL exists = NO;
     exists = [self.sut existsAttributeNamed:@"name"
                              forEntityNamed:@"Business"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertTrue(exists);
     exists = [self.sut existsAttributeNamed:@"priceInPence"
                              forEntityNamed:@"Product"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:nil];
     XCTAssertTrue(exists);
     NSError *error;
     exists = [self.sut existsAttributeNamed:@"name"
                              forEntityNamed:@"Car"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:&error];
     XCTAssertTrue(exists);
     exists = [self.sut existsAttributeNamed:@"employees"
                              forEntityNamed:@"Business"
-                                  inContext:self.stack.managedObjectContext
+                                  inContext:self.stack.mainQueueContext
                                       error:&error];
     XCTAssertTrue(exists);
     XCTAssertNil(error);
@@ -253,12 +253,12 @@
     BOOL exists = NO;
     exists = [self.sut existsRelationshipNamed:@"mother"
                                 forEntityNamed:@"Business"
-                                     inContext:self.stack.managedObjectContext
+                                     inContext:self.stack.mainQueueContext
                                          error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsRelationshipNamed:@"cuz"
                                 forEntityNamed:@"Car"
-                                     inContext:self.stack.managedObjectContext
+                                     inContext:self.stack.mainQueueContext
                                          error:nil];
     XCTAssertFalse(exists);
 }
@@ -268,12 +268,12 @@
     BOOL exists = NO;
     exists = [self.sut existsRelationshipNamed:@"products"
                                 forEntityNamed:@"Businessyness"
-                                     inContext:self.stack.managedObjectContext
+                                     inContext:self.stack.mainQueueContext
                                          error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsRelationshipNamed:@"business"
                                 forEntityNamed:@"SteamEngine"
-                                     inContext:self.stack.managedObjectContext
+                                     inContext:self.stack.mainQueueContext
                                          error:nil];
     XCTAssertFalse(exists);
 }
@@ -283,12 +283,12 @@
     BOOL exists = NO;
     exists = [self.sut existsRelationshipNamed:@"products"
                                 forEntityNamed:@"Business"
-                                     inContext:self.stack.managedObjectContext
+                                     inContext:self.stack.mainQueueContext
                                          error:nil];
     XCTAssertTrue(exists);
     exists = [self.sut existsRelationshipNamed:@"business"
                                 forEntityNamed:@"Product"
-                                     inContext:self.stack.managedObjectContext
+                                     inContext:self.stack.mainQueueContext
                                          error:nil];
     XCTAssertTrue(exists);
 }
@@ -330,11 +330,11 @@
     
     BOOL exists = NO;
     exists = [self.sut existsContentsForEntityNamed:@"Bollocks!"
-                                          inContext:self.stack.managedObjectContext
+                                          inContext:self.stack.mainQueueContext
                                               error:nil];
     XCTAssertFalse(exists);
     exists = [self.sut existsContentsForEntityNamed:@"Twat!"
-                                          inContext:self.stack.managedObjectContext
+                                          inContext:self.stack.mainQueueContext
                                               error:nil];
     XCTAssertFalse(exists);
     
@@ -346,7 +346,7 @@
     BOOL exists = NO;
     NSError *error;
     exists = [self.sut existsContentsForEntityNamed:@"Car"
-                                          inContext:self.stack.managedObjectContext
+                                          inContext:self.stack.mainQueueContext
                                               error:&error];
     XCTAssertTrue(exists);
     XCTAssertNil(error);
@@ -356,7 +356,7 @@
         }
     }
     exists = [self.sut existsContentsForEntityNamed:@"Motorbike"
-                                          inContext:self.stack.managedObjectContext
+                                          inContext:self.stack.mainQueueContext
                                               error:&error];
     XCTAssertTrue(exists);
     XCTAssertNil(error);
@@ -422,9 +422,9 @@
     if (count == 0) {
         // add some contents
         NSEntityDescription *entityDesc = [NSEntityDescription entityForName:NSStringFromClass([Business class])
-                                                      inManagedObjectContext:self.stack.managedObjectContext];
+                                                      inManagedObjectContext:self.stack.mainQueueContext];
         Business *aBusiness = [[Business alloc]initWithEntity:entityDesc
-                               insertIntoManagedObjectContext:self.stack.managedObjectContext];
+                               insertIntoManagedObjectContext:self.stack.mainQueueContext];
         aBusiness.name = @"testCountOfManagedObjectsInStack LTD";
         aBusiness.employees = @420;
         count = [self.sut countOfManagedObjectsInStack:self.stack
@@ -460,7 +460,7 @@
     NSUInteger count = 0;
     NSError *error;
     count = [self.sut countOfManagedObjectsForEntityName:@"Blahdyblah"
-                                               inContext:self.stack.managedObjectContext
+                                               inContext:self.stack.mainQueueContext
                                                    error:&error];
     XCTAssertTrue(count == 0);
     XCTAssertNotNil(error);
@@ -470,19 +470,19 @@
     
     NSUInteger count = 0;
     count = [self.sut countOfManagedObjectsForEntityName:@"Business"
-                                               inContext:self.stack.managedObjectContext
+                                               inContext:self.stack.mainQueueContext
                                                    error:nil];
     NSError *error;
     if (count == 0) {
         // add some contents
         NSEntityDescription *entityDesc = [NSEntityDescription entityForName:NSStringFromClass([Business class])
-                                                      inManagedObjectContext:self.stack.managedObjectContext];
+                                                      inManagedObjectContext:self.stack.mainQueueContext];
         Business *aBusiness = [[Business alloc]initWithEntity:entityDesc
-                               insertIntoManagedObjectContext:self.stack.managedObjectContext];
+                               insertIntoManagedObjectContext:self.stack.mainQueueContext];
         aBusiness.name = @"testCountOfManagedObjectsForEntity LTD";
         aBusiness.employees = @42;
         count = [self.sut countOfManagedObjectsForEntityName:@"Business"
-                                                   inContext:self.stack.managedObjectContext
+                                                   inContext:self.stack.mainQueueContext
                                                        error:&error];
     }
     

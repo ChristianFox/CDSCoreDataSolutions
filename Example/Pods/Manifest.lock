@@ -1,5 +1,5 @@
 PODS:
-  - CDSCoreDataSolutions (0.5.0)
+  - CDSCoreDataSolutions (0.6.0)
 
 DEPENDENCIES:
   - CDSCoreDataSolutions (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: ../
 
 SPEC CHECKSUMS:
-  CDSCoreDataSolutions: 4941ea7f6cc245cee58e4052d1b8e778e9253630
+  CDSCoreDataSolutions: c13dd6b1c8e36119c0ba343a2bfc81ba11d4b5ef
 
 PODFILE CHECKSUM: bd7b74d52f6b389b3e7ce197e79219d285c04c83
 
-COCOAPODS: 1.0.0
+COCOAPODS: 1.0.1

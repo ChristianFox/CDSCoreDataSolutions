@@ -11,9 +11,9 @@
 
 @implementation CDSCoreDataStack (ForUnitTesting)
 
--(void)clearContextWithCompletion:(CDSBooleanCompletionHandler)handlerOrNil{
+-(void)clearMainQueueContextWithCompletion:(CDSBooleanCompletionHandler)handlerOrNil{
     
-    if (self.publicContext == nil) {
+    if (self.mainQueueContext == nil) {
         
         NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeManagedObjectContextIsNull
                                            withObject:nil];
@@ -23,13 +23,27 @@
     }else{
         
         // set to nil to clear and then build new
-        self.publicContext = nil;
-        self.publicContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-        self.publicContext.parentContext = self.privateContext;
-        
-        if (handlerOrNil != nil) {
-            handlerOrNil(YES,nil);
+        self.mainQueueContext = nil;
+        self.mainQueueContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+
+        if (self.mainQueueContext == nil) {
+            if (handlerOrNil != nil) {
+                NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitiliseMainQueueContext
+                                                   withObject:nil];
+                handlerOrNil(NO,error);
+            }
+            return;
+        }else{
+            self.mainQueueContext.CDSID = [kContextCDSIDPrefix stringByAppendingString:@"PublicMainQueueContext"];
+            self.mainQueueContext.name = [kContextCDSIDPrefix stringByAppendingString:@"PublicMainQueueContext"];
+            self.mainQueueContext.parentContext = self.persistenceContext;
+            if (handlerOrNil != nil) {
+                handlerOrNil(YES,nil);
+            }
+
         }
+        
+        
     }
 }
 

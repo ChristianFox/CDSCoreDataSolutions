@@ -140,7 +140,7 @@
     [entities enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         
         hasContents = [self existsContentsForEntityNamed:key
-                                               inContext:stack.managedObjectContext
+                                               inContext:stack.mainQueueContext
                                                    error:error];
         *stop = hasContents;
     }];
@@ -188,7 +188,7 @@
     [entities enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
         
         count += [self countOfManagedObjectsForEntityName:key
-                                                inContext:stack.managedObjectContext
+                                                inContext:stack.mainQueueContext
                                                     error:error];
     }];
     
@@ -216,7 +216,7 @@
     NSMutableDictionary *mutDict = [NSMutableDictionary dictionaryWithCapacity:entities.count];
     for (NSString *key in entities) {
         NSUInteger aCount = [self countOfManagedObjectsForEntityName:key
-                                                           inContext:stack.managedObjectContext
+                                                           inContext:stack.mainQueueContext
                                                                error:error];
         [mutDict setObject:@(aCount) forKey:key];
     }

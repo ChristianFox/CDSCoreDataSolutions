@@ -8,31 +8,32 @@
 
 /* Begin PBXBuildFile section */
 		015ADA6077C3956A1FEA2CA20C36CA61 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		116F997C65A32E1B4D970E838077AD7A /* CDSValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = C5991DAE38AC25D71893073184327641 /* CDSValidator.m */; };
-		171EFD453757142C1AEE453E06F585B3 /* CDSAuditor.h in Headers */ = {isa = PBXBuildFile; fileRef = 722756F7B69768D15653DAEEB273FC2E /* CDSAuditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1BC20299C3CA561FB9A2DA92F2531F35 /* CDSPersistentStoreDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = B441301AF9BBD2AE67FD945887E9779B /* CDSPersistentStoreDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		1F64C38FD629A41408A160A215821ABF /* CDSFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = ACAF41B3335A7AFA84B60835CFAC6955 /* CDSFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		22F47200EA468670D02E0B5B6821904E /* CDSCoreDataStack_PrivateExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 972447166D431720D665757993F17D89 /* CDSCoreDataStack_PrivateExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		2F8F8E3E433E33BA80D0485CBB4102D5 /* CDSCoreDataStack.h in Headers */ = {isa = PBXBuildFile; fileRef = A8F8DC43E0D46BBEE0B52717DA16C388 /* CDSCoreDataStack.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		331B9CA4FC094CAF87E061C6A7E62CD0 /* CDSDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = 79FF95361BB95EF03EAD72974D4FCE57 /* CDSDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		3C32FEE9EAE05B0917666FDCF35F2DEE /* CDSDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = CAABDB914B9328467D4C90DE5B5486B2 /* CDSDefinitions.m */; };
-		3E91991957A27D47F14418EE4E77F316 /* CDSCoreDataSolutions.h in Headers */ = {isa = PBXBuildFile; fileRef = D9A5E623C16067308BF15ED17DB25F75 /* CDSCoreDataSolutions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0ABE4F6F16D4AB19580EB8D4CA59DAFF /* CDSCoreDataSolutions-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C627F4DFE042BEA1C03B6FEFCE6B6BD4 /* CDSCoreDataSolutions-dummy.m */; };
+		101E0054C2541B3F548D989BD99FBC1E /* CDSLoggingDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D291E318B49314FBDD214BC227E04B8 /* CDSLoggingDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		4911755C5A1F77088584CAD7EA814C26 /* CDSCoreDataStack+ForUnitTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = DA86161BBDCF833E3AB00A9226F6DB13 /* CDSCoreDataStack+ForUnitTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5115856F34490B3991369353FCE25827 /* CDSErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = 76D452C5918FF5CE38907F6E6129BFEC /* CDSErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		5B28D0C41D72F356004EB11D /* CDSCoreDataStack.h in Headers */ = {isa = PBXBuildFile; fileRef = 5B28D0C21D72F356004EB11D /* CDSCoreDataStack.h */; };
+		5B28D0C51D72F356004EB11D /* CDSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B28D0C31D72F356004EB11D /* CDSCoreDataStack.m */; };
 		5B5877883F0FD90DA1CD8BA30C35856B /* Pods-CDSCoreDataSolutions_Example-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = FF2A41F3D403822F4896C6B998CFC5A6 /* Pods-CDSCoreDataSolutions_Example-dummy.m */; };
-		6072D1E66499E8969413069D9EF5CDD3 /* CDSCoreDataStack.m in Sources */ = {isa = PBXBuildFile; fileRef = DE77C3B6819154A30044F55DE8FBF716 /* CDSCoreDataStack.m */; };
-		6094B27C2FE9A34C1D89C6C594815B2A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		634CC467348A7BCCE75A86A856663B29 /* CDSValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 2783412A79069D4F8580EE8E065802EC /* CDSValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		71C1107A163FCFEE983374029DB6045D /* CDSCoreDataStack+ForUnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = BDBC1E6318012888D2FF31D076861D44 /* CDSCoreDataStack+ForUnitTesting.m */; };
+		674D982428A402BE3233EBD550FED65E /* CDSAuditor.h in Headers */ = {isa = PBXBuildFile; fileRef = BA6FE765F01F1DD8408179D70EF9D45F /* CDSAuditor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		717C49040CD83390905C29B80BAA86F0 /* CDSDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = 2BBD7B03E02206E9709084334246AE3B /* CDSDefinitions.m */; };
+		729029EF460142DD44A479F5F6915CA1 /* CDSValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 95BFE8E61796AAB639A0A1F01550CA8C /* CDSValidator.m */; };
+		77FE27E0539ACC77BE45275F9C441360 /* CDSCoreDataStack+ForUnitTesting.m in Sources */ = {isa = PBXBuildFile; fileRef = 1E5788F264D6A5E5B2AE694732665BDC /* CDSCoreDataStack+ForUnitTesting.m */; };
 		7850129A91749536E5292E430D290BC2 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
-		86D308D44CBFB5D7586A33E27A0C8001 /* CDSAuditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 4871B9A065AE476B6104102EB2F5B226 /* CDSAuditor.m */; };
-		8E4FA31C567E5C5D928E12F240700662 /* CDSCoreDataSolutions-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = C627F4DFE042BEA1C03B6FEFCE6B6BD4 /* CDSCoreDataSolutions-dummy.m */; };
-		A503ADFBDEB26CFBC9A98BF2940BC5F6 /* CDSManagedObjectModelDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6A2F2EB4EB550B926D1444807DE1ACA1 /* CDSManagedObjectModelDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		AFA8914D03B5025FADFB45A0B6FA463B /* CDSPersistentStoreDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = C80A0099BAF81026DDBB944D4446101B /* CDSPersistentStoreDescriptor.m */; };
+		801787A4394D7694BC2C0ACC843DC4B4 /* CDSFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 94A91647739193A7C6B8B6C1118CC01C /* CDSFetcher.m */; };
+		877EEDE78CD468FED58C9604983D1F18 /* CDSFetcher.h in Headers */ = {isa = PBXBuildFile; fileRef = 15739880FF2A55E0B591CEB1C4BDB81F /* CDSFetcher.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		920646C48B01AB7E1A0650309C6D79A6 /* CDSAuditor.m in Sources */ = {isa = PBXBuildFile; fileRef = 689EE1243FB5FA5B3C6E9BA30892639F /* CDSAuditor.m */; };
+		9ADE4A138E97F6F9773BFF6F3FC332A8 /* CDSManagedObjectModelDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = B29415EA4B9D27120546093867691483 /* CDSManagedObjectModelDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		9F0E7B5C87F33F42143F090537BD6BE0 /* CDSPersistentStoreDescriptor.h in Headers */ = {isa = PBXBuildFile; fileRef = 8418F4B3ED6BD52B5ECE14BF71936E35 /* CDSPersistentStoreDescriptor.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B0B982A92B23D9808B010539C82D194D /* CDSCoreDataStack_PrivateExtension.h in Headers */ = {isa = PBXBuildFile; fileRef = 59C6494E71345B5129EA319E9F0CA079 /* CDSCoreDataStack_PrivateExtension.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B64470269B8EA88C727C13964326F068 /* CDSValidator.h in Headers */ = {isa = PBXBuildFile; fileRef = 46834759BE4AE9B453530DEFC9AD2135 /* CDSValidator.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		B6E4F528774E75DD7F3B52D80F58D289 /* Pods-CDSCoreDataSolutions_Tests-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = E7DAF13D51D0555076B481C778920646 /* Pods-CDSCoreDataSolutions_Tests-dummy.m */; };
-		C1AFC3DE38BDA0269CEB7A046B923654 /* CDSErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 69ADF8884221BC3E155FCF077A03FA31 /* CDSErrors.m */; };
-		C6405EA29B92F13FE20621A558C3A94A /* CDSManagedObjectModelDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 560DBC45FFDC78BB307D87E3D400DCDA /* CDSManagedObjectModelDescriptor.m */; };
-		D68A2E2F95AC06222767E3BC8DB6106A /* CDSErrors.h in Headers */ = {isa = PBXBuildFile; fileRef = EF0217DFB559CAE917939E8538503FB8 /* CDSErrors.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		EB7F8791B74359E6DD69404FF5A5AC0D /* CDSFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 658C276C6965DF849D7B628DEFC4C1EA /* CDSFetcher.m */; };
-		F155F2DE6083FF86FFAF1EB699C68A24 /* CDSCoreDataStack+ForUnitTesting.h in Headers */ = {isa = PBXBuildFile; fileRef = A3F4BCBA58EC84A65F00490C5B2F06CA /* CDSCoreDataStack+ForUnitTesting.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		BEC1C2D584223B5A35B763B31D6AD126 /* CDSErrors.m in Sources */ = {isa = PBXBuildFile; fileRef = 42CE5B8F7C2BD3D19A52957D9ED22276 /* CDSErrors.m */; };
+		C57D07A269EB57B4EAB0CF293A4C1E5C /* CDSManagedObjectModelDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 547BBDBC6D2EC6A214EB9F67D7398F11 /* CDSManagedObjectModelDescriptor.m */; };
+		D0BC2CA92340E467C94D562F00C92126 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */; };
+		D6FC38247639BCA7AC67983DCCE20633 /* CDSCoreDataSolutions.h in Headers */ = {isa = PBXBuildFile; fileRef = 092981BB28E8831BAF38260AB42C45E4 /* CDSCoreDataSolutions.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		E8D3B81B58EB0635844620749E58899C /* CDSPersistentStoreDescriptor.m in Sources */ = {isa = PBXBuildFile; fileRef = 53B0912EEC3C9E21F848974BDFECF685 /* CDSPersistentStoreDescriptor.m */; };
+		F83E0523D836F770995C98D5DF35F7B4 /* CDSDefinitions.h in Headers */ = {isa = PBXBuildFile; fileRef = D056D45BD2EC1F1518FE44CB019F8EE4 /* CDSDefinitions.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,51 +41,52 @@
 			isa = PBXContainerItemProxy;
 			containerPortal = D41D8CD98F00B204E9800998ECF8427E /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = E650DBFD6BAF3B236CB40C5266EE4AEE;
+			remoteGlobalIDString = 4B857574858D23A4FB1164196D111170;
 			remoteInfo = CDSCoreDataSolutions;
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		092981BB28E8831BAF38260AB42C45E4 /* CDSCoreDataSolutions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataSolutions.h; sourceTree = "<group>"; };
 		10FB9730BA0D605626D2F439FE6AC2AF /* CDSCoreDataSolutions-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDSCoreDataSolutions-prefix.pch"; sourceTree = "<group>"; };
-		2783412A79069D4F8580EE8E065802EC /* CDSValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSValidator.h; sourceTree = "<group>"; };
+		15739880FF2A55E0B591CEB1C4BDB81F /* CDSFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSFetcher.h; sourceTree = "<group>"; };
+		1E5788F264D6A5E5B2AE694732665BDC /* CDSCoreDataStack+ForUnitTesting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CDSCoreDataStack+ForUnitTesting.m"; sourceTree = "<group>"; };
+		2BBD7B03E02206E9709084334246AE3B /* CDSDefinitions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSDefinitions.m; sourceTree = "<group>"; };
 		3A1CB8296E4C4C55484992E1AE886719 /* Pods-CDSCoreDataSolutions_Tests-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CDSCoreDataSolutions_Tests-frameworks.sh"; sourceTree = "<group>"; };
 		3A5C08CC163A868FFEB4C7EA83C5AC69 /* Pods-CDSCoreDataSolutions_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CDSCoreDataSolutions_Example.release.xcconfig"; sourceTree = "<group>"; };
 		41D84C94C3D0D5666D6EE1EA8A258EC2 /* Pods-CDSCoreDataSolutions_Example-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CDSCoreDataSolutions_Example-acknowledgements.markdown"; sourceTree = "<group>"; };
-		4871B9A065AE476B6104102EB2F5B226 /* CDSAuditor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSAuditor.m; sourceTree = "<group>"; };
-		560DBC45FFDC78BB307D87E3D400DCDA /* CDSManagedObjectModelDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSManagedObjectModelDescriptor.m; sourceTree = "<group>"; };
+		42CE5B8F7C2BD3D19A52957D9ED22276 /* CDSErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSErrors.m; sourceTree = "<group>"; };
+		46834759BE4AE9B453530DEFC9AD2135 /* CDSValidator.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSValidator.h; sourceTree = "<group>"; };
+		53B0912EEC3C9E21F848974BDFECF685 /* CDSPersistentStoreDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSPersistentStoreDescriptor.m; sourceTree = "<group>"; };
+		547BBDBC6D2EC6A214EB9F67D7398F11 /* CDSManagedObjectModelDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSManagedObjectModelDescriptor.m; sourceTree = "<group>"; };
 		592061C4B4E72CE9F20E1B9523284664 /* Pods-CDSCoreDataSolutions_Tests-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-CDSCoreDataSolutions_Tests-acknowledgements.markdown"; sourceTree = "<group>"; };
+		59C6494E71345B5129EA319E9F0CA079 /* CDSCoreDataStack_PrivateExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataStack_PrivateExtension.h; sourceTree = "<group>"; };
+		5B28D0C21D72F356004EB11D /* CDSCoreDataStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataStack.h; sourceTree = "<group>"; };
+		5B28D0C31D72F356004EB11D /* CDSCoreDataStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSCoreDataStack.m; sourceTree = "<group>"; };
 		5EB7726379E690BFAFFE6F13B9E3932F /* libPods-CDSCoreDataSolutions_Tests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDSCoreDataSolutions_Tests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		658C276C6965DF849D7B628DEFC4C1EA /* CDSFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSFetcher.m; sourceTree = "<group>"; };
 		66607EF46C0F6F1DFFB8F4FCF7DB825E /* Pods-CDSCoreDataSolutions_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CDSCoreDataSolutions_Example.debug.xcconfig"; sourceTree = "<group>"; };
-		69ADF8884221BC3E155FCF077A03FA31 /* CDSErrors.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSErrors.m; sourceTree = "<group>"; };
-		6A2F2EB4EB550B926D1444807DE1ACA1 /* CDSManagedObjectModelDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSManagedObjectModelDescriptor.h; sourceTree = "<group>"; };
-		722756F7B69768D15653DAEEB273FC2E /* CDSAuditor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSAuditor.h; sourceTree = "<group>"; };
-		79FF95361BB95EF03EAD72974D4FCE57 /* CDSDefinitions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSDefinitions.h; sourceTree = "<group>"; };
+		689EE1243FB5FA5B3C6E9BA30892639F /* CDSAuditor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSAuditor.m; sourceTree = "<group>"; };
+		76D452C5918FF5CE38907F6E6129BFEC /* CDSErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSErrors.h; sourceTree = "<group>"; };
 		7F8C79D201A8959FD257C4143BBBB76D /* Pods-CDSCoreDataSolutions_Tests-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CDSCoreDataSolutions_Tests-acknowledgements.plist"; sourceTree = "<group>"; };
 		805D30A1B55C52CF9EDF78A7191EAA42 /* libCDSCoreDataSolutions.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libCDSCoreDataSolutions.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		822A6ADCBE84377CB044EECBCC9BF329 /* Pods-CDSCoreDataSolutions_Example-frameworks.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CDSCoreDataSolutions_Example-frameworks.sh"; sourceTree = "<group>"; };
+		8418F4B3ED6BD52B5ECE14BF71936E35 /* CDSPersistentStoreDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSPersistentStoreDescriptor.h; sourceTree = "<group>"; };
+		8D291E318B49314FBDD214BC227E04B8 /* CDSLoggingDelegate.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSLoggingDelegate.h; sourceTree = "<group>"; };
 		93A4A3777CF96A4AAC1D13BA6DCCEA73 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		972447166D431720D665757993F17D89 /* CDSCoreDataStack_PrivateExtension.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataStack_PrivateExtension.h; sourceTree = "<group>"; };
+		94A91647739193A7C6B8B6C1118CC01C /* CDSFetcher.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSFetcher.m; sourceTree = "<group>"; };
+		95BFE8E61796AAB639A0A1F01550CA8C /* CDSValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSValidator.m; sourceTree = "<group>"; };
 		9BDBCBC04474D1FC685DBCB8E4BF5042 /* Pods-CDSCoreDataSolutions_Example-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CDSCoreDataSolutions_Example-resources.sh"; sourceTree = "<group>"; };
 		A1F916E8475E693F7865F33C55A4279D /* Pods-CDSCoreDataSolutions_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CDSCoreDataSolutions_Tests.release.xcconfig"; sourceTree = "<group>"; };
-		A3F4BCBA58EC84A65F00490C5B2F06CA /* CDSCoreDataStack+ForUnitTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDSCoreDataStack+ForUnitTesting.h"; sourceTree = "<group>"; };
 		A7CBD5F9089A2F72C44E551BF15AAA05 /* Pods-CDSCoreDataSolutions_Example-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-CDSCoreDataSolutions_Example-acknowledgements.plist"; sourceTree = "<group>"; };
-		A8F8DC43E0D46BBEE0B52717DA16C388 /* CDSCoreDataStack.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataStack.h; sourceTree = "<group>"; };
-		ACAF41B3335A7AFA84B60835CFAC6955 /* CDSFetcher.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSFetcher.h; sourceTree = "<group>"; };
-		B441301AF9BBD2AE67FD945887E9779B /* CDSPersistentStoreDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSPersistentStoreDescriptor.h; sourceTree = "<group>"; };
+		B29415EA4B9D27120546093867691483 /* CDSManagedObjectModelDescriptor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSManagedObjectModelDescriptor.h; sourceTree = "<group>"; };
 		B9E23155F68D6B9AB65CEFBC11245088 /* libPods-CDSCoreDataSolutions_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDSCoreDataSolutions_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		BDBC1E6318012888D2FF31D076861D44 /* CDSCoreDataStack+ForUnitTesting.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CDSCoreDataStack+ForUnitTesting.m"; sourceTree = "<group>"; };
-		C5991DAE38AC25D71893073184327641 /* CDSValidator.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSValidator.m; sourceTree = "<group>"; };
+		BA6FE765F01F1DD8408179D70EF9D45F /* CDSAuditor.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSAuditor.h; sourceTree = "<group>"; };
 		C627F4DFE042BEA1C03B6FEFCE6B6BD4 /* CDSCoreDataSolutions-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "CDSCoreDataSolutions-dummy.m"; sourceTree = "<group>"; };
-		C80A0099BAF81026DDBB944D4446101B /* CDSPersistentStoreDescriptor.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSPersistentStoreDescriptor.m; sourceTree = "<group>"; };
-		CAABDB914B9328467D4C90DE5B5486B2 /* CDSDefinitions.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSDefinitions.m; sourceTree = "<group>"; };
 		CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		D9A5E623C16067308BF15ED17DB25F75 /* CDSCoreDataSolutions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSCoreDataSolutions.h; sourceTree = "<group>"; };
-		DE77C3B6819154A30044F55DE8FBF716 /* CDSCoreDataStack.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = CDSCoreDataStack.m; sourceTree = "<group>"; };
+		D056D45BD2EC1F1518FE44CB019F8EE4 /* CDSDefinitions.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSDefinitions.h; sourceTree = "<group>"; };
+		DA86161BBDCF833E3AB00A9226F6DB13 /* CDSCoreDataStack+ForUnitTesting.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "CDSCoreDataStack+ForUnitTesting.h"; sourceTree = "<group>"; };
 		E00EAE763782904D16E1F65C4ACD4E26 /* CDSCoreDataSolutions.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = CDSCoreDataSolutions.xcconfig; sourceTree = "<group>"; };
 		E7DAF13D51D0555076B481C778920646 /* Pods-CDSCoreDataSolutions_Tests-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CDSCoreDataSolutions_Tests-dummy.m"; sourceTree = "<group>"; };
-		EF0217DFB559CAE917939E8538503FB8 /* CDSErrors.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = CDSErrors.h; sourceTree = "<group>"; };
 		F75123250069435C1B8A730FD9847F02 /* Pods-CDSCoreDataSolutions_Tests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-CDSCoreDataSolutions_Tests.debug.xcconfig"; sourceTree = "<group>"; };
 		FF0DA1B8C15229576575506EB81B33C5 /* Pods-CDSCoreDataSolutions_Tests-resources.sh */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.script.sh; path = "Pods-CDSCoreDataSolutions_Tests-resources.sh"; sourceTree = "<group>"; };
 		FF2A41F3D403822F4896C6B998CFC5A6 /* Pods-CDSCoreDataSolutions_Example-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-CDSCoreDataSolutions_Example-dummy.m"; sourceTree = "<group>"; };
@@ -99,19 +101,19 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DBDE24C74AE6175F96619ED40F031171 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D0BC2CA92340E467C94D562F00C92126 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E01119902BAA1AEE263EBEC6E3622CCA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				7850129A91749536E5292E430D290BC2 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F61C791F22485A07F30C638345240039 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6094B27C2FE9A34C1D89C6C594815B2A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -145,33 +147,6 @@
 				CEC22C73C1608DFA5D5D78BDCB218219 /* Foundation.framework */,
 			);
 			name = iOS;
-			sourceTree = "<group>";
-		};
-		4383A58D761446B46D4AFA38D0FB599E /* Classes */ = {
-			isa = PBXGroup;
-			children = (
-				722756F7B69768D15653DAEEB273FC2E /* CDSAuditor.h */,
-				4871B9A065AE476B6104102EB2F5B226 /* CDSAuditor.m */,
-				D9A5E623C16067308BF15ED17DB25F75 /* CDSCoreDataSolutions.h */,
-				A8F8DC43E0D46BBEE0B52717DA16C388 /* CDSCoreDataStack.h */,
-				DE77C3B6819154A30044F55DE8FBF716 /* CDSCoreDataStack.m */,
-				A3F4BCBA58EC84A65F00490C5B2F06CA /* CDSCoreDataStack+ForUnitTesting.h */,
-				BDBC1E6318012888D2FF31D076861D44 /* CDSCoreDataStack+ForUnitTesting.m */,
-				972447166D431720D665757993F17D89 /* CDSCoreDataStack_PrivateExtension.h */,
-				79FF95361BB95EF03EAD72974D4FCE57 /* CDSDefinitions.h */,
-				CAABDB914B9328467D4C90DE5B5486B2 /* CDSDefinitions.m */,
-				EF0217DFB559CAE917939E8538503FB8 /* CDSErrors.h */,
-				69ADF8884221BC3E155FCF077A03FA31 /* CDSErrors.m */,
-				ACAF41B3335A7AFA84B60835CFAC6955 /* CDSFetcher.h */,
-				658C276C6965DF849D7B628DEFC4C1EA /* CDSFetcher.m */,
-				6A2F2EB4EB550B926D1444807DE1ACA1 /* CDSManagedObjectModelDescriptor.h */,
-				560DBC45FFDC78BB307D87E3D400DCDA /* CDSManagedObjectModelDescriptor.m */,
-				B441301AF9BBD2AE67FD945887E9779B /* CDSPersistentStoreDescriptor.h */,
-				C80A0099BAF81026DDBB944D4446101B /* CDSPersistentStoreDescriptor.m */,
-				2783412A79069D4F8580EE8E065802EC /* CDSValidator.h */,
-				C5991DAE38AC25D71893073184327641 /* CDSValidator.m */,
-			);
-			path = Classes;
 			sourceTree = "<group>";
 		};
 		4BD7565CDE268A57F0B6B9EF061FB506 /* Pods-CDSCoreDataSolutions_Example */ = {
@@ -223,20 +198,20 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BCB519B27B33AFD6E262F9C10184F523 /* CDSCoreDataSolutions */ = {
+			isa = PBXGroup;
+			children = (
+				F3A83F219BF556ACE7DE68263AA9D025 /* Classes */,
+			);
+			path = CDSCoreDataSolutions;
+			sourceTree = "<group>";
+		};
 		E64048C671EE2F66CC510A48177F1DD1 /* Development Pods */ = {
 			isa = PBXGroup;
 			children = (
 				F39371AE4ECA2DB5988DC3C7A84E7617 /* CDSCoreDataSolutions */,
 			);
 			name = "Development Pods";
-			sourceTree = "<group>";
-		};
-		E7DA938A6458197253BBFBF002F11FF5 /* CDSCoreDataSolutions */ = {
-			isa = PBXGroup;
-			children = (
-				4383A58D761446B46D4AFA38D0FB599E /* Classes */,
-			);
-			path = CDSCoreDataSolutions;
 			sourceTree = "<group>";
 		};
 		EBBD231F6927AA0E227D6A4A75166132 /* Targets Support Files */ = {
@@ -251,31 +226,60 @@
 		F39371AE4ECA2DB5988DC3C7A84E7617 /* CDSCoreDataSolutions */ = {
 			isa = PBXGroup;
 			children = (
-				E7DA938A6458197253BBFBF002F11FF5 /* CDSCoreDataSolutions */,
+				BCB519B27B33AFD6E262F9C10184F523 /* CDSCoreDataSolutions */,
 				2791E1D37511D076C9143F9C9E7B3F05 /* Support Files */,
 			);
 			name = CDSCoreDataSolutions;
 			path = ../..;
 			sourceTree = "<group>";
 		};
+		F3A83F219BF556ACE7DE68263AA9D025 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				092981BB28E8831BAF38260AB42C45E4 /* CDSCoreDataSolutions.h */,
+				BA6FE765F01F1DD8408179D70EF9D45F /* CDSAuditor.h */,
+				689EE1243FB5FA5B3C6E9BA30892639F /* CDSAuditor.m */,
+				5B28D0C21D72F356004EB11D /* CDSCoreDataStack.h */,
+				5B28D0C31D72F356004EB11D /* CDSCoreDataStack.m */,
+				DA86161BBDCF833E3AB00A9226F6DB13 /* CDSCoreDataStack+ForUnitTesting.h */,
+				1E5788F264D6A5E5B2AE694732665BDC /* CDSCoreDataStack+ForUnitTesting.m */,
+				59C6494E71345B5129EA319E9F0CA079 /* CDSCoreDataStack_PrivateExtension.h */,
+				D056D45BD2EC1F1518FE44CB019F8EE4 /* CDSDefinitions.h */,
+				2BBD7B03E02206E9709084334246AE3B /* CDSDefinitions.m */,
+				76D452C5918FF5CE38907F6E6129BFEC /* CDSErrors.h */,
+				42CE5B8F7C2BD3D19A52957D9ED22276 /* CDSErrors.m */,
+				15739880FF2A55E0B591CEB1C4BDB81F /* CDSFetcher.h */,
+				94A91647739193A7C6B8B6C1118CC01C /* CDSFetcher.m */,
+				8D291E318B49314FBDD214BC227E04B8 /* CDSLoggingDelegate.h */,
+				B29415EA4B9D27120546093867691483 /* CDSManagedObjectModelDescriptor.h */,
+				547BBDBC6D2EC6A214EB9F67D7398F11 /* CDSManagedObjectModelDescriptor.m */,
+				8418F4B3ED6BD52B5ECE14BF71936E35 /* CDSPersistentStoreDescriptor.h */,
+				53B0912EEC3C9E21F848974BDFECF685 /* CDSPersistentStoreDescriptor.m */,
+				46834759BE4AE9B453530DEFC9AD2135 /* CDSValidator.h */,
+				95BFE8E61796AAB639A0A1F01550CA8C /* CDSValidator.m */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		2134DFC0290D7E8E52C432BE7354A4FE /* Headers */ = {
+		529D63DE839C6B18D1946AA0011785CB /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				171EFD453757142C1AEE453E06F585B3 /* CDSAuditor.h in Headers */,
-				3E91991957A27D47F14418EE4E77F316 /* CDSCoreDataSolutions.h in Headers */,
-				F155F2DE6083FF86FFAF1EB699C68A24 /* CDSCoreDataStack+ForUnitTesting.h in Headers */,
-				2F8F8E3E433E33BA80D0485CBB4102D5 /* CDSCoreDataStack.h in Headers */,
-				22F47200EA468670D02E0B5B6821904E /* CDSCoreDataStack_PrivateExtension.h in Headers */,
-				331B9CA4FC094CAF87E061C6A7E62CD0 /* CDSDefinitions.h in Headers */,
-				D68A2E2F95AC06222767E3BC8DB6106A /* CDSErrors.h in Headers */,
-				1F64C38FD629A41408A160A215821ABF /* CDSFetcher.h in Headers */,
-				A503ADFBDEB26CFBC9A98BF2940BC5F6 /* CDSManagedObjectModelDescriptor.h in Headers */,
-				1BC20299C3CA561FB9A2DA92F2531F35 /* CDSPersistentStoreDescriptor.h in Headers */,
-				634CC467348A7BCCE75A86A856663B29 /* CDSValidator.h in Headers */,
+				674D982428A402BE3233EBD550FED65E /* CDSAuditor.h in Headers */,
+				D6FC38247639BCA7AC67983DCCE20633 /* CDSCoreDataSolutions.h in Headers */,
+				4911755C5A1F77088584CAD7EA814C26 /* CDSCoreDataStack+ForUnitTesting.h in Headers */,
+				5B28D0C41D72F356004EB11D /* CDSCoreDataStack.h in Headers */,
+				B0B982A92B23D9808B010539C82D194D /* CDSCoreDataStack_PrivateExtension.h in Headers */,
+				F83E0523D836F770995C98D5DF35F7B4 /* CDSDefinitions.h in Headers */,
+				5115856F34490B3991369353FCE25827 /* CDSErrors.h in Headers */,
+				877EEDE78CD468FED58C9604983D1F18 /* CDSFetcher.h in Headers */,
+				101E0054C2541B3F548D989BD99FBC1E /* CDSLoggingDelegate.h in Headers */,
+				9ADE4A138E97F6F9773BFF6F3FC332A8 /* CDSManagedObjectModelDescriptor.h in Headers */,
+				9F0E7B5C87F33F42143F090537BD6BE0 /* CDSPersistentStoreDescriptor.h in Headers */,
+				B64470269B8EA88C727C13964326F068 /* CDSValidator.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -298,6 +302,23 @@
 			productReference = 5EB7726379E690BFAFFE6F13B9E3932F /* libPods-CDSCoreDataSolutions_Tests.a */;
 			productType = "com.apple.product-type.library.static";
 		};
+		4B857574858D23A4FB1164196D111170 /* CDSCoreDataSolutions */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 11D3E131E463B1891ED78C306A1480BC /* Build configuration list for PBXNativeTarget "CDSCoreDataSolutions" */;
+			buildPhases = (
+				CD2AAEB940288AD6E1B686D048FC545C /* Sources */,
+				DBDE24C74AE6175F96619ED40F031171 /* Frameworks */,
+				529D63DE839C6B18D1946AA0011785CB /* Headers */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = CDSCoreDataSolutions;
+			productName = CDSCoreDataSolutions;
+			productReference = 805D30A1B55C52CF9EDF78A7191EAA42 /* libCDSCoreDataSolutions.a */;
+			productType = "com.apple.product-type.library.static";
+		};
 		B5ABD4A32CEA4D0543A4F1229EDC9B9A /* Pods-CDSCoreDataSolutions_Example */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = D5A92F4FD22F3BE55B8BDE50F4B63CA6 /* Build configuration list for PBXNativeTarget "Pods-CDSCoreDataSolutions_Example" */;
@@ -313,23 +334,6 @@
 			name = "Pods-CDSCoreDataSolutions_Example";
 			productName = "Pods-CDSCoreDataSolutions_Example";
 			productReference = B9E23155F68D6B9AB65CEFBC11245088 /* libPods-CDSCoreDataSolutions_Example.a */;
-			productType = "com.apple.product-type.library.static";
-		};
-		E650DBFD6BAF3B236CB40C5266EE4AEE /* CDSCoreDataSolutions */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 252188901FB77A11FE7EABEE63E5C3E6 /* Build configuration list for PBXNativeTarget "CDSCoreDataSolutions" */;
-			buildPhases = (
-				38DB366632E208736D2CCE4010A6E880 /* Sources */,
-				F61C791F22485A07F30C638345240039 /* Frameworks */,
-				2134DFC0290D7E8E52C432BE7354A4FE /* Headers */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = CDSCoreDataSolutions;
-			productName = CDSCoreDataSolutions;
-			productReference = 805D30A1B55C52CF9EDF78A7191EAA42 /* libCDSCoreDataSolutions.a */;
 			productType = "com.apple.product-type.library.static";
 		};
 /* End PBXNativeTarget section */
@@ -353,7 +357,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				E650DBFD6BAF3B236CB40C5266EE4AEE /* CDSCoreDataSolutions */,
+				4B857574858D23A4FB1164196D111170 /* CDSCoreDataSolutions */,
 				B5ABD4A32CEA4D0543A4F1229EDC9B9A /* Pods-CDSCoreDataSolutions_Example */,
 				36516529D3B9D1138E22002D8932853D /* Pods-CDSCoreDataSolutions_Tests */,
 			);
@@ -361,23 +365,6 @@
 /* End PBXProject section */
 
 /* Begin PBXSourcesBuildPhase section */
-		38DB366632E208736D2CCE4010A6E880 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				86D308D44CBFB5D7586A33E27A0C8001 /* CDSAuditor.m in Sources */,
-				8E4FA31C567E5C5D928E12F240700662 /* CDSCoreDataSolutions-dummy.m in Sources */,
-				71C1107A163FCFEE983374029DB6045D /* CDSCoreDataStack+ForUnitTesting.m in Sources */,
-				6072D1E66499E8969413069D9EF5CDD3 /* CDSCoreDataStack.m in Sources */,
-				3C32FEE9EAE05B0917666FDCF35F2DEE /* CDSDefinitions.m in Sources */,
-				C1AFC3DE38BDA0269CEB7A046B923654 /* CDSErrors.m in Sources */,
-				EB7F8791B74359E6DD69404FF5A5AC0D /* CDSFetcher.m in Sources */,
-				C6405EA29B92F13FE20621A558C3A94A /* CDSManagedObjectModelDescriptor.m in Sources */,
-				AFA8914D03B5025FADFB45A0B6FA463B /* CDSPersistentStoreDescriptor.m in Sources */,
-				116F997C65A32E1B4D970E838077AD7A /* CDSValidator.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		64270A61DB74B964E9BD79F4F9EB6909 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -394,13 +381,30 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CD2AAEB940288AD6E1B686D048FC545C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920646C48B01AB7E1A0650309C6D79A6 /* CDSAuditor.m in Sources */,
+				0ABE4F6F16D4AB19580EB8D4CA59DAFF /* CDSCoreDataSolutions-dummy.m in Sources */,
+				5B28D0C51D72F356004EB11D /* CDSCoreDataStack.m in Sources */,
+				77FE27E0539ACC77BE45275F9C441360 /* CDSCoreDataStack+ForUnitTesting.m in Sources */,
+				717C49040CD83390905C29B80BAA86F0 /* CDSDefinitions.m in Sources */,
+				BEC1C2D584223B5A35B763B31D6AD126 /* CDSErrors.m in Sources */,
+				801787A4394D7694BC2C0ACC843DC4B4 /* CDSFetcher.m in Sources */,
+				C57D07A269EB57B4EAB0CF293A4C1E5C /* CDSManagedObjectModelDescriptor.m in Sources */,
+				E8D3B81B58EB0635844620749E58899C /* CDSPersistentStoreDescriptor.m in Sources */,
+				729029EF460142DD44A479F5F6915CA1 /* CDSValidator.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
 		617A3199AE2B181FCDD6B35046884509 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CDSCoreDataSolutions;
-			target = E650DBFD6BAF3B236CB40C5266EE4AEE /* CDSCoreDataSolutions */;
+			target = 4B857574858D23A4FB1164196D111170 /* CDSCoreDataSolutions */;
 			targetProxy = 8FB138DFFF31F77D0713F6D22A83690C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -528,28 +532,7 @@
 			};
 			name = Debug;
 		};
-		9B88F765C63F4DF4C697EA525562A6F9 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = E00EAE763782904D16E1F65C4ACD4E26 /* CDSCoreDataSolutions.xcconfig */;
-			buildSettings = {
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
-				ENABLE_STRICT_OBJC_MSGSEND = YES;
-				GCC_NO_COMMON_BLOCKS = YES;
-				GCC_PREFIX_HEADER = "Target Support Files/CDSCoreDataSolutions/CDSCoreDataSolutions-prefix.pch";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
-				MTL_ENABLE_DEBUG_INFO = NO;
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PRIVATE_HEADERS_FOLDER_PATH = "";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				PUBLIC_HEADERS_FOLDER_PATH = "";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-			};
-			name = Release;
-		};
-		A2F8C6D9B5F73A7200FC1CB60926524B /* Debug */ = {
+		9969B130B3889CA15D9773CAD676B052 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E00EAE763782904D16E1F65C4ACD4E26 /* CDSCoreDataSolutions.xcconfig */;
 			buildSettings = {
@@ -569,6 +552,27 @@
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
+		};
+		B4559495C9ED9381A84A00C1B96AE8F8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = E00EAE763782904D16E1F65C4ACD4E26 /* CDSCoreDataSolutions.xcconfig */;
+			buildSettings = {
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_PREFIX_HEADER = "Target Support Files/CDSCoreDataSolutions/CDSCoreDataSolutions-prefix.pch";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PRIVATE_HEADERS_FOLDER_PATH = "";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PUBLIC_HEADERS_FOLDER_PATH = "";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
 		};
 		D3E3D092A3FF7311A98E44BBA36FFD12 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -615,11 +619,11 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		252188901FB77A11FE7EABEE63E5C3E6 /* Build configuration list for PBXNativeTarget "CDSCoreDataSolutions" */ = {
+		11D3E131E463B1891ED78C306A1480BC /* Build configuration list for PBXNativeTarget "CDSCoreDataSolutions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				A2F8C6D9B5F73A7200FC1CB60926524B /* Debug */,
-				9B88F765C63F4DF4C697EA525562A6F9 /* Release */,
+				9969B130B3889CA15D9773CAD676B052 /* Debug */,
+				B4559495C9ED9381A84A00C1B96AE8F8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

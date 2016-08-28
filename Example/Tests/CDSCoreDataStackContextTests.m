@@ -52,29 +52,37 @@
                              storeDescriptors:nil
                                    completion:^(BOOL success, NSError *error)
      {
-
+         
          // WHEN - build & insert
-         [CDSManagedObjectBuilder buildAndInsertBusinesses:10
-                                               intoContext:stack.managedObjectContext];
-         
-         
-         // WHEN - save
-         [stack saveWithCompletion:^(BOOL success, NSError *error) {
+         NSManagedObjectContext *insertContext = [stack newBackgroundContext];
+         [insertContext performBlock:^{
              
-             // THEN
-             XCTAssertTrue(success);
-             XCTAssertNil(error);
-             
-             // THEN - should be able to clear context and fetch
-             [stack clearContextWithCompletion:nil];
-             
-             NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Business"];
-             
-             NSArray *matching = [stack.managedObjectContext executeFetchRequest:request
-                                                                           error:nil];
-             XCTAssertTrue(matching.count >= 10);
-             [expectation fulfill];
-
+             [CDSManagedObjectBuilder buildAndInsertBusinesses:10
+                                                   intoContext:insertContext];
+             // Save insert and stop if fails
+             NSError *error;
+             if (![insertContext save:&error]) {
+                 if (error != nil) {
+                     NSLog(@"\n ** <ERROR> %@",error);
+                 }
+                 XCTFail(@"/n ** <FAIL> Failed to save insertContext");
+                 [expectation fulfill];
+                 
+             }else{
+                 // Insert context did save successfully
+                 
+                 // THEN - we should be able to fetch using a different context
+                 NSManagedObjectContext *fetchContext = [stack newBackgroundContext];
+                 [fetchContext performBlock:^{
+                     
+                     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Business"];
+                     
+                     NSArray *matching = [fetchContext executeFetchRequest:request
+                                                                     error:nil];
+                     XCTAssertTrue(matching.count >= 10);
+                     [expectation fulfill];
+                 }];
+             }
          }];
      }];
     
@@ -99,31 +107,39 @@
     [stack configureStackWithModelDescriptors:@[modelDescriptor]
                              storeDescriptors:nil
                                    completion:^(BOOL success, NSError *error)
-     {
-         
+     {        
          // WHEN - build & insert
-         [CDSManagedObjectBuilder buildAndInsertPrimates:10
-                                               intoContext:stack.managedObjectContext];
-         
-         
-         // WHEN - save
-         [stack saveWithCompletion:^(BOOL success, NSError *error) {
+         NSManagedObjectContext *insertContext = [stack newBackgroundContext];
+         [insertContext performBlock:^{
              
-             // THEN
-             XCTAssertTrue(success);
-             XCTAssertNil(error);
-             
-             // THEN - should be able to clear context and fetch
-             [stack clearContextWithCompletion:nil];
-             
-             NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Primate"];
-             
-             NSArray *matching = [stack.managedObjectContext executeFetchRequest:request
-                                                                           error:nil];
-             XCTAssertTrue(matching.count >= 10);
-             [expectation fulfill];
-             
+             [CDSManagedObjectBuilder buildAndInsertPrimates:10
+                                                 intoContext:insertContext];
+             // Save insert and stop if fails
+             NSError *error;
+             if (![insertContext save:&error]) {
+                 if (error != nil) {
+                     NSLog(@"\n ** <ERROR> %@",error);
+                 }
+                 XCTFail(@"/n ** <FAIL> Failed to save insertContext");
+                 [expectation fulfill];
+                 
+             }else{
+                 // Insert context did save successfully
+                 
+                 // THEN - we should be able to fetch using a different context
+                 NSManagedObjectContext *fetchContext = [stack newBackgroundContext];
+                 [fetchContext performBlock:^{
+                     
+                     NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Primate"];
+                     
+                     NSArray *matching = [fetchContext executeFetchRequest:request
+                                                                     error:nil];
+                     XCTAssertTrue(matching.count >= 10);
+                     [expectation fulfill];
+                 }];
+             }
          }];
+
      }];
     
     // Wait
@@ -140,7 +156,7 @@
     /*
      The primary purpose of this test is to test that the data is saved to two different stores. To check requires navigating in the finder and viewing the sqlite files. 
      The thing I had missed was setting the configuation in the model and in the store descriptor. Before doing this the data was not being split correctly between the two stores (all data would go in one store).
-     
+     This test will create two stores which have identical tables but only one will contain any data.
      Here I don't set the configuaration property whereas in the test below I do.
      */
     
@@ -164,33 +180,43 @@
      {
          
          // WHEN - build & insert
-         [CDSManagedObjectBuilder buildAndInsertPrimates:10
-                                             intoContext:stack.managedObjectContext];
-         [CDSManagedObjectBuilder buildAndInsertBusinesses:10
-                                               intoContext:stack.managedObjectContext];
+         NSManagedObjectContext *insertContext = [stack newBackgroundContext];
+         [insertContext performBlockAndWait:^{
+             [CDSManagedObjectBuilder buildAndInsertPrimates:10
+                                                 intoContext:insertContext];
+             [CDSManagedObjectBuilder buildAndInsertBusinesses:10
+                                                   intoContext:insertContext];
+             // Save insert and stop if fails
+             NSError *error;
+             if (![insertContext save:&error]) {
+                 if (error != nil) {
+                     NSLog(@"\n ** <ERROR> %@",error);
+                 }
+                 XCTFail(@"/n ** <FAIL> Failed to save insertContext");
+                 [expectation fulfill];
+             }
+         }];
          
-         // WHEN - save
-         [stack saveWithCompletion:^(BOOL success, NSError *error) {
-             
+         // New context to fetch data
+         NSManagedObjectContext *fetchContext = [stack newBackgroundContext];
+         [fetchContext performBlock:^{
              // THEN
              XCTAssertTrue(success);
              XCTAssertNil(error);
              
-             // THEN - should be able to clear context and fetch
-             [stack clearContextWithCompletion:nil];
-             
              NSFetchRequest *request1 = [NSFetchRequest fetchRequestWithEntityName:@"Primate"];
-             NSArray *matching1 = [stack.managedObjectContext executeFetchRequest:request1
-                                                                           error:nil];
+             NSArray *matching1 = [fetchContext executeFetchRequest:request1
+                                                              error:nil];
              XCTAssertTrue(matching1.count >= 10);
              NSFetchRequest *request2 = [NSFetchRequest fetchRequestWithEntityName:@"Business"];
-             NSArray *matching2 = [stack.managedObjectContext executeFetchRequest:request2
-                                                                            error:nil];
+             NSArray *matching2 = [fetchContext executeFetchRequest:request2
+                                                              error:nil];
              XCTAssertTrue(matching2.count >= 10);
-
+             
              [expectation fulfill];
              
          }];
+
      }];
     
     // Wait
@@ -205,9 +231,9 @@
 -(void)testInsertAnimalAndBusinessObjectsAndSaveContext_WithTwoModels_ShouldInsertAndSaveThemToTwoDifferentStores{
     
     /*
-     The primary purpose of this test is to test that the data is saved to two different stores. To check requires navigating in the finder and viewing the sqlite files.
+     The primary purpose of this test is to test that the data is saved to two different stores. To check requires navigating in the finder and viewing the sqlite files. (possibly I could check the file sizes or access the sql directly but, leave that for another day (never))
      Before doing this the data was not being split correctly between the two stores (all data would go in one store). The thing I had missed was setting the configuation in the model and in the store descriptor.
-     
+     This test will create two stores with identical tables but the data will be split correctly.
      Here I set the configuration property but in the test above I do not.
      */
     
@@ -227,38 +253,51 @@
     storeDescriptorAnimal.name = @"AnimalStore6-ConfigurationSet";
     storeDescriptorAnimal.configuration = @"MainAnimalConfig";
     
+    
+    NSLog(@"%@",storeDescriptorBiz.URL);
     [stack configureStackWithModelDescriptors:@[modelDescriptorBiz,modelDescriptorAnimal]
                              storeDescriptors:@[storeDescriptorBiz,storeDescriptorAnimal]
                                    completion:^(BOOL success, NSError *error)
      {
          
          // WHEN - build & insert
-         [CDSManagedObjectBuilder buildAndInsertPrimates:10
-                                             intoContext:stack.managedObjectContext];
-         [CDSManagedObjectBuilder buildAndInsertBusinesses:10
-                                               intoContext:stack.managedObjectContext];
-         
-         // WHEN - save
-         [stack saveWithCompletion:^(BOOL success, NSError *error) {
+         NSManagedObjectContext *insertContext = [stack newBackgroundContext];
+         [insertContext performBlock:^{
+            
+             [CDSManagedObjectBuilder buildAndInsertPrimates:10
+                                                 intoContext:insertContext];
+             [CDSManagedObjectBuilder buildAndInsertBusinesses:10
+                                                   intoContext:insertContext];
+             // Save insert and stop if fails
+             NSError *error;
+             if (![insertContext save:&error]) {
+                 if (error != nil) {
+                     NSLog(@"\n ** <ERROR> %@",error);
+                 }
+                 XCTFail(@"/n ** <FAIL> Failed to save insertContext");
+                 [expectation fulfill];
+                 
+             }
              
-             // THEN
-             XCTAssertTrue(success);
-             XCTAssertNil(error);
              
-             // THEN - should be able to clear context and fetch
-             [stack clearContextWithCompletion:nil];
-             
-             NSFetchRequest *request1 = [NSFetchRequest fetchRequestWithEntityName:@"Primate"];
-             NSArray *matching1 = [stack.managedObjectContext executeFetchRequest:request1
+             // New context to fetch data
+             NSManagedObjectContext *fetchContext = [stack newBackgroundContext];
+             [fetchContext performBlock:^{
+
+                 // THEN
+                 NSFetchRequest *request1 = [NSFetchRequest fetchRequestWithEntityName:@"Primate"];
+                 NSArray *matching1 = [fetchContext executeFetchRequest:request1
                                                                             error:nil];
-             XCTAssertTrue(matching1.count >= 10);
-             NSFetchRequest *request2 = [NSFetchRequest fetchRequestWithEntityName:@"Business"];
-             NSArray *matching2 = [stack.managedObjectContext executeFetchRequest:request2
+                 XCTAssertTrue(matching1.count >= 10);
+                 NSFetchRequest *request2 = [NSFetchRequest fetchRequestWithEntityName:@"Business"];
+                 NSArray *matching2 = [fetchContext executeFetchRequest:request2
                                                                             error:nil];
-             XCTAssertTrue(matching2.count >= 10);
-             
-             [expectation fulfill];
-             
+                 XCTAssertTrue(matching2.count >= 10);
+                 
+                 [expectation fulfill];
+
+             }];
+
          }];
      }];
     

@@ -7,15 +7,13 @@
 //
 
 #import "CDSTestsAppDelegate.h"
-#import <CDSCoreDataSolutions/CDSCoreDataStack.h>
-#import <CDSCoreDataSolutions/CDSPersistentStoreDescriptor.h>
-#import <CDSCoreDataSolutions/CDSManagedObjectModelDescriptor.h>
+#import <CDSCoreDataSolutions/CDSCoreDataSolutions.h>
 #import "CDSManagedObjectBuilder.h"
 
 
 @implementation CDSTestsAppDelegate
 
--(BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
+-(BOOL)application:(UIApplication *)application willFinishLaunchingWithOptions:(NSDictionary *)launchOptions{
     
     CDSCoreDataStack *stack = [CDSCoreDataStack sharedStack];
     
@@ -32,17 +30,34 @@
     {
        
         NSLog(@"<CONFIGURED> SharedInstance of Stack has been configured with success: %d",success);
-        dispatch_async(dispatch_get_main_queue(), ^{
+        NSManagedObjectContext *bgContext = [stack newBackgroundContext];
+        [bgContext performBlockAndWait:^{
             
-            [CDSManagedObjectBuilder buildAndInsertBusinesses:5
-                                                  intoContext:stack.managedObjectContext];
-            [CDSManagedObjectBuilder buildAndInsertCars:5
-                                            intoContext:stack.managedObjectContext];
             [CDSManagedObjectBuilder buildAndInsertMotorbikes:5
-                                                  intoContext:stack.managedObjectContext];
+                                                  intoContext:bgContext];
+            [CDSManagedObjectBuilder buildAndInsertBusinesses:5
+                                                  intoContext:bgContext];
+            [CDSManagedObjectBuilder buildAndInsertCars:5
+                                            intoContext:bgContext];
             
-        });
-        dispatch_semaphore_signal(semaphore);
+            NSError *error;
+            BOOL success = NO;
+            success = [bgContext save:&error];
+            if (!success){
+                NSLog(@"<FAIL> Failed to save bgcontext");
+                if (error != nil) {
+                    NSLog(@"<ERROR> %@",error);
+                }
+            }
+            
+            CDSAuditor *auditor = [CDSAuditor auditor];
+            NSDictionary *countsDict = [auditor countsKeyedByNamesOfEntitiesInStack:stack
+                                                                              error:nil];
+            NSLog(@"\n\n* <COUNT> %@", countsDict);
+            
+            dispatch_semaphore_signal(semaphore);
+            
+        }];
     
     }];
     

@@ -72,7 +72,7 @@
     NSError *error;
     // WHEN
     NSArray *matching = [self.sut fetchAllWithEntityName:@"Poop"
-                                                 context:self.stack.managedObjectContext
+                                                 context:self.stack.mainQueueContext
                                                    error:&error];
     // THEN
     XCTAssertNil(matching);
@@ -81,41 +81,111 @@
 
 - (void)testFetchAllManagedObjects_WithValidArguments_ShouldReturnArray{
     
-    // GIVEN
-    NSManagedObjectContext *context = self.stack.managedObjectContext;
-    
-    // WHEN
-    NSError *error;
-    NSArray *motorbikes = [self.sut fetchAllWithEntityName:@"Motorbike"
-                                                   context:context
-                                                     error:&error];
-    // THEN
-    XCTAssertNotNil(motorbikes);
-    XCTAssertTrue(motorbikes.count > 0);
-    XCTAssertNil(error);
-    
-    // WHEN
-    NSArray *cars = [self.sut fetchAllWithEntityName:@"Car"
-                                             context:context
-                                               error:&error];
-    // THEN
-    XCTAssertNotNil(cars);
-    XCTAssertTrue(cars.count > 0);
-    XCTAssertNil(error);
-    
-    // WHEN
-    NSArray *products = [self.sut fetchAllWithEntityName:@"Product"
+    [self.stack.mainQueueContext performBlockAndWait:^{
+        
+        NSManagedObjectContext *context = self.stack.mainQueueContext;
+            NSError *error = nil;
+
+
+        
+        NSArray *cars = [self.sut fetchAllWithEntityName:@"Car"
                                                  context:context
                                                    error:&error];
-    // THEN
-    XCTAssertNotNil(products);
-    XCTAssertTrue(products.count > 0);
-    XCTAssertNil(error);
+        // THEN
+        XCTAssertNotNil(cars);
+        XCTAssertTrue(cars.count > 0);
+        XCTAssertNil(error);
+
+        cars = [self.sut fetchAllWithEntityName:@"Car"
+                                                 context:context
+                                                   error:&error];
+        // THEN
+        XCTAssertNotNil(cars);
+        XCTAssertTrue(cars.count > 0);
+        XCTAssertNil(error);
+
+        
+        cars = [self.sut fetchAllWithEntityName:@"Car"
+                                                 context:context
+                                                   error:&error];
+        // THEN
+        XCTAssertNotNil(cars);
+        XCTAssertTrue(cars.count > 0);
+        XCTAssertNil(error);
+
+        cars = [self.sut fetchAllWithEntityName:@"Car"
+                                        context:context
+                                          error:&error];
+        // THEN
+        XCTAssertNotNil(cars);
+        XCTAssertTrue(cars.count > 0);
+        XCTAssertNil(error);
+
+        cars = [self.sut fetchAllWithEntityName:@"Car"
+                                        context:context
+                                          error:&error];
+        // THEN
+        XCTAssertNotNil(cars);
+        XCTAssertTrue(cars.count > 0);
+        XCTAssertNil(error);
+
+        NSArray *bizs = [self.sut fetchAllWithEntityName:@"Business"
+                                                     context:context
+                                                       error:&error];
+        // THEN
+        XCTAssertNotNil(bizs);
+        XCTAssertTrue(bizs.count > 0);
+//
+        
+//        NSArray *motorbikes = [self.sut fetchAllWithEntityName:@"Motorbike"
+//                                                       context:context
+//                                                         error:&error];
+//        // THEN
+//        XCTAssertNotNil(motorbikes);
+//        XCTAssertTrue(motorbikes.count > 0);
+//        XCTAssertNil(error);
+//
+
+    }];
     
-    // THEN final test
-    NSUInteger totalProducts = cars.count + motorbikes.count;
-    XCTAssertTrue(totalProducts == products.count);
+    
+    // GIVEN
+//    NSManagedObjectContext *context = self.stack.mainQueueContext;
+    
+    // WHEN
+//    NSError *error = nil;
+//    NSArray *motorbikes = [self.sut fetchAllWithEntityName:@"Motorbike"
+//                                                   context:context
+//                                                     error:&error];
+//    // THEN
+//    XCTAssertNotNil(motorbikes);
+//    XCTAssertTrue(motorbikes.count > 0);
+//    XCTAssertNil(error);
+//    
+    // WHEN
+//    NSArray *cars = [self.sut fetchAllWithEntityName:@"Car"
+//                                             context:context
+//                                               error:&error];
+//    // THEN
+//    XCTAssertNotNil(cars);
+//    XCTAssertTrue(cars.count > 0);
+//    XCTAssertNil(error);
+    
+    // WHEN
+//    NSArray *products = [self.sut fetchAllWithEntityName:@"Product"
+//                                                 context:context
+//                                                   error:&error];
+//    // THEN
+//    XCTAssertNotNil(products);
+//    XCTAssertTrue(products.count > 0);
+//    XCTAssertNil(error);
+//
+//    // THEN final test
+//    NSUInteger totalProducts = cars.count;// + motorbikes.count;
+//    XCTAssertTrue(totalProducts == products.count);
 }
+
+
 
 
 //--------------------------------------------------------
@@ -124,14 +194,14 @@
 -(void)testFetchWithFetchRequest_WithValidFetchRequest_ShouldreturnArray{
     
     
-    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Motorbike"];
+    NSFetchRequest *request = [NSFetchRequest fetchRequestWithEntityName:@"Car"];
     request.fetchLimit = 2;
     
     NSError *error;
     
     NSArray *matching =
     [self.sut fetchWithFetchRequest:request
-                            context:self.stack.managedObjectContext
+                            context:self.stack.mainQueueContext
                               error:&error];
     
     XCTAssertNotNil(matching);
@@ -140,22 +210,21 @@
 }
 
 
-
 //--------------------------------------------------------
 #pragma mark - -fetchFilteredWithPredicate: entityName: context:
 //--------------------------------------------------------
 -(void)testFetchWithPredicate_WithValidPredicate_ShouldReturnArray{
     
-    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K = %@",@"name",@"Bike 2"];
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"%K = %@",@"name",@"Car 2"];
     
     NSError *error;
     
     NSArray *matching = [self.sut fetchFilteredWithPredicate:pred
-                                                  entityName:@"Motorbike"
-                                                     context:self.stack.managedObjectContext
+                                                  entityName:@"Car"
+                                                     context:self.stack.mainQueueContext
                                                        error:&error];
     XCTAssertNotNil(matching);
-    XCTAssertEqual(matching.count, 1);
+    XCTAssertTrue(matching.count > 1);
     XCTAssertNil(error);
 }
 
@@ -173,7 +242,7 @@
                                                         batchSize:2
                                                        fetchLimit:4
                                                        entityName:@"Car"
-                                                          context:self.stack.managedObjectContext
+                                                          context:self.stack.mainQueueContext
                                                             error:&error];
     XCTAssertNotNil(matching);
     XCTAssertTrue(matching.count > 2);
@@ -189,16 +258,16 @@
 //--------------------------------------------------------
 -(void)testFetchMatchingAllObjects_WithValidObjects_ShouldReturnArray{
     
-    NSArray *objects = @[@"Bike 3",@"3 KM/h"];
-    NSArray *keyPaths = @[@"name",@"blurb"];
+    NSArray *objects = @[@"Biz 2",@2];
+    NSArray *keyPaths = @[@"name",@"employees"];
     NSError *error;
     NSArray *matching = [self.sut fetchMatchingAllObjects:objects
                                                atKeyPaths:keyPaths
-                                               entityName:@"Motorbike"
-                                                  context:self.stack.managedObjectContext
+                                               entityName:@"Business"
+                                                  context:self.stack.mainQueueContext
                                                     error:&error];
     XCTAssertNotNil(matching);
-    XCTAssertEqual(matching.count, 1);
+    XCTAssertTrue(matching.count > 1);
     XCTAssertNil(error);
 }
 
@@ -208,16 +277,16 @@
 //--------------------------------------------------------
 -(void)testFetchMatchingAnyObjects_WithValidObjects_ShouldReturnArray{
     
-    NSArray *objects = @[@"Bike 3",@"4 KM/h"];
-    NSArray *keyPaths = @[@"name",@"blurb"];
+    NSArray *objects = @[@"Biz 2",@3];
+    NSArray *keyPaths = @[@"name",@"employees"];
     NSError *error;
     NSArray *matching = [self.sut fetchMatchingAnyObjects:objects
                                                atKeyPaths:keyPaths
-                                               entityName:@"Motorbike"
-                                                  context:self.stack.managedObjectContext
+                                               entityName:@"Business"
+                                                  context:self.stack.mainQueueContext
                                                     error:&error];
     XCTAssertNotNil(matching);
-    XCTAssertEqual(matching.count, 2);
+    XCTAssertTrue(matching.count > 1);
     XCTAssertNil(error);
 }
 

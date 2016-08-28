@@ -51,7 +51,7 @@
     CDSCoreDataStack *stack = [[CDSCoreDataStack alloc]init];
 
     XCTAssertNil(stack.managedObjectModel);
-    XCTAssertNil(stack.managedObjectContext);
+    XCTAssertNil(stack.mainQueueContext);
     XCTAssertNil(stack.persistentStoreCoordinator);
 }
 
@@ -77,7 +77,7 @@
         // THEN
         XCTAssertNil(error);
         XCTAssertTrue(success);
-        XCTAssertNotNil(stack.managedObjectContext);
+        XCTAssertNotNil(stack.mainQueueContext);
         XCTAssertNotNil(stack.managedObjectModel);
         XCTAssertNotNil(stack.persistentStoreCoordinator);
         [expectation fulfill];
@@ -110,7 +110,7 @@
          // THEN
          XCTAssertNil(error);
          XCTAssertTrue(success);
-         XCTAssertNotNil(stack.managedObjectContext);
+         XCTAssertNotNil(stack.mainQueueContext);
          XCTAssertNotNil(stack.managedObjectModel);
          XCTAssertNotNil(stack.persistentStoreCoordinator);
          [expectation fulfill];
@@ -145,7 +145,7 @@
          // THEN
          XCTAssertNil(error);
          XCTAssertTrue(success);
-         XCTAssertNotNil(stack.managedObjectContext);
+         XCTAssertNotNil(stack.mainQueueContext);
          XCTAssertNotNil(stack.managedObjectModel);
          XCTAssertNotNil(stack.persistentStoreCoordinator);
          [expectation fulfill];
@@ -185,7 +185,7 @@
          // THEN
          XCTAssertNil(error);
          XCTAssertTrue(success);
-         XCTAssertNotNil(stack.managedObjectContext);
+         XCTAssertNotNil(stack.mainQueueContext);
          XCTAssertNotNil(stack.managedObjectModel);
          XCTAssertNotNil(stack.persistentStoreCoordinator);
          [expectation fulfill];

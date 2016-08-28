@@ -12,6 +12,9 @@
 #import "CDSPersistentStoreDescriptor.h"
 #import "CDSManagedObjectModelDescriptor.h"
 
+
+
+
 @interface CDSCoreDataStack ()
 
 
@@ -43,8 +46,16 @@
     
     dispatch_once(&oncePredicate,^{
         sharedStack = [[self alloc]init];
+        [sharedStack registerForNotifications];
     });
     return sharedStack;
+}
+
+//--------------------------------------------------------
+#pragma mark - NSObject
+//--------------------------------------------------------
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 
 //--------------------------------------------------------
@@ -58,8 +69,8 @@
     // ??? We will have problems if other classes are holding a reference to any of these.
     self.managedObjectModel = nil;
     self.persistentStoreCoordinator = nil;
-    self.publicContext = nil;
-    self.privateContext = nil;
+    self.mainQueueContext = nil;
+    self.persistenceContext = nil;
     
     // ## Create ManagedObjectModel ##
     self.managedObjectModel = [self newManagedObjectModelWithModelDescriptors:modelDescriptors];
@@ -84,10 +95,12 @@
     }
 
     // ## Create Private NSManagedObjectContext ##
-    self.privateContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
-    if (self.privateContext == nil) {
+    self.persistenceContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    self.persistenceContext.CDSID = [kContextCDSIDPrefix stringByAppendingString:@"PrivateRootContext"];
+    self.persistenceContext.name = [kContextCDSIDPrefix stringByAppendingString:@"PrivateRootContext"];
+    if (self.persistenceContext == nil) {
         if (handlerOrNil != nil) {
-            NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitilisePrivateContext
+            NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitilisePersistenceContext
                                                withObject:nil];
             handlerOrNil(NO,error);
         }
@@ -95,10 +108,12 @@
     }
     
     // ## Create Public NSManagedObjectContext ##
-    self.publicContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
-    if (self.publicContext == nil) {
+    self.mainQueueContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    self.mainQueueContext.CDSID = [kContextCDSIDPrefix stringByAppendingString:@"PublicMainQueueContext"];
+    self.mainQueueContext.name = [kContextCDSIDPrefix stringByAppendingString:@"PublicMainQueueContext"];
+    if (self.mainQueueContext == nil) {
         if (handlerOrNil != nil) {
-            NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitilisePublicContext
+            NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitiliseMainQueueContext
                                                withObject:nil];
             handlerOrNil(NO,error);
         }
@@ -107,8 +122,10 @@
 
     
     // ## Final Configuration ##
-    self.publicContext.parentContext = self.privateContext;
-    self.privateContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    self.mainQueueContext.parentContext = self.persistenceContext;
+    self.persistenceContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    self.mainQueueContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
+    self.persistenceContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
     
     [self configurePersistentStoresWithStoreDescriptors:storeDescriptors
                                       completionHandler:handlerOrNil];
@@ -118,13 +135,27 @@
 //--------------------------------------------------------
 #pragma mark - Public Accessors
 //--------------------------------------------------------
--(NSManagedObjectContext *)managedObjectContext{
-    return self.publicContext;
+-(NSManagedObjectContext *)mainQueueContext{
+    return self.mainQueueContext;
 }
 
 //--------------------------------------------------------
 #pragma mark - ManagedObjectContext
 //--------------------------------------------------------
+-(NSManagedObjectContext*)newBackgroundContext{
+    
+    // ## Create NSManagedObjectContext ##
+    NSManagedObjectContext *bgContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    
+    bgContext.parentContext = self.persistenceContext;
+    bgContext.CDSID = [kContextCDSIDPrefix stringByAppendingString:@"BackgroundContext"];
+    bgContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
+
+    return bgContext;
+}
+
+
+// TODO: Can probably get rid of this...
 -(void)saveWithCompletion:(CDSBooleanCompletionHandler)handlerOrNil{
     
     
@@ -137,48 +168,62 @@
     }
     
     // if no changes to save, lets get outta here!
-    if (![self.privateContext hasChanges] && ![self.managedObjectContext hasChanges]) {
-        if (handlerOrNil != nil) {
-            handlerOrNil(YES,nil);
-        }
-        return;
-    }
+    __block BOOL publicHasChanges = NO;
+    __block BOOL privateHasChanges = NO;
     
-    // do saving here
-    [self.managedObjectContext performBlockAndWait:^{
+    [self.persistenceContext performBlockAndWait:^{
+       
+        privateHasChanges = self.persistenceContext.hasChanges;
         
-        NSError *error = nil;
-        BOOL mainContextSaved = NO;
-        mainContextSaved = [self.managedObjectContext save:&error];
-        if (!mainContextSaved) {
-            if (handlerOrNil != nil) {
-                handlerOrNil(NO,error);
-            }
-            return;
-        }
-        
-        [self.privateContext performBlock:^{
+        [self.mainQueueContext performBlockAndWait:^{
             
-            NSError *privateError = nil;
-            BOOL privateContextSaved = NO;
-            privateContextSaved = [self.privateContext save:&privateError];
-            if (!privateContextSaved) {
+            publicHasChanges = self.mainQueueContext.hasChanges;
+            
+            if (!publicHasChanges && !privateHasChanges) {
+                
                 if (handlerOrNil != nil) {
-                    handlerOrNil(NO,privateError);
+                    handlerOrNil(YES,nil);
                 }
                 return;
-            }
-            
-            // SUCCESSFULLY SAVED
-            if (handlerOrNil != nil) {
-                handlerOrNil(YES,nil);
+            }else{
+                
+                
+                // do saving here
+                [self.mainQueueContext performBlockAndWait:^{
+                    
+                    NSError *error = nil;
+                    BOOL mainContextSaved = NO;
+                    mainContextSaved = [self.mainQueueContext save:&error];
+                    if (!mainContextSaved) {
+                        if (handlerOrNil != nil) {
+                            handlerOrNil(NO,error);
+                        }
+                        return;
+                    }
+                    
+                    [self.persistenceContext performBlock:^{
+                        
+                        NSError *privateError = nil;
+                        BOOL persistenceContextSaved = NO;
+                        persistenceContextSaved = [self.persistenceContext save:&privateError];
+                        if (!persistenceContextSaved) {
+                            if (handlerOrNil != nil) {
+                                handlerOrNil(NO,privateError);
+                            }
+                            return;
+                        }
+                        
+                        // SUCCESSFULLY SAVED
+                        if (handlerOrNil != nil) {
+                            handlerOrNil(YES,nil);
+                        }
+                    }];
+                }];
             }
         }];
     }];
-
+    
 }
-
-
 
 
 //--------------------------------------------------------
@@ -263,8 +308,9 @@
 /// Creates persistentStore/s and adds to self.persistentStoreCoordinator. Works on background queue. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"
 -(void)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors completionHandler:(CDSBooleanCompletionHandler)handlerOrNil{
     
+   
     
-    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^{
+    dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         NSError *localError = nil;
         
@@ -272,6 +318,7 @@
             
             // For each descriptor, creat a store and add it to coordinator
             for (CDSPersistentStoreDescriptor *descriptor in storeDescriptors) {
+                
                 
                 NSPersistentStore *store = [self.persistentStoreCoordinator addPersistentStoreWithType:descriptor.type
                                                                                          configuration:descriptor.configuration
@@ -309,7 +356,7 @@
         
         // If we get to this point it must have been a success
         if (handlerOrNil != nil) {
-            handlerOrNil(YES,localError);
+            handlerOrNil(YES,nil);
         }
         
         
@@ -358,7 +405,6 @@
 //======================================================
 #pragma mark - ** Private Methods **
 //======================================================
-
 //--------------------------------------------------------
 #pragma mark - Configuration Helpers
 //--------------------------------------------------------
@@ -389,6 +435,89 @@
 }
 
 
+//--------------------------------------------------------
+#pragma mark - Notifications
+//--------------------------------------------------------
+-(void)registerForNotifications{
+    
+ 
+    [[NSNotificationCenter defaultCenter]addObserverForName:NSManagedObjectContextWillSaveNotification
+                                                     object:nil
+                                                      queue:nil
+                                                 usingBlock:^(NSNotification * _Nonnull note)
+     {
+         NSManagedObjectContext *context = note.object;
+         if (context.CDSID == nil) {
+             return ;
+         }else{
+             
+             if ([self.loggingDelegate respondsToSelector:@selector(logNotificationReceived:withMessage:)]) {
+                 [self.loggingDelegate logNotificationReceived:note
+                                                   withMessage:nil];
+             }
+             
+         }
+         
+     }];
+    
+    [[NSNotificationCenter defaultCenter]addObserverForName:NSManagedObjectContextDidSaveNotification
+                                                     object:nil
+                                                      queue:nil
+                                                 usingBlock:^(NSNotification * _Nonnull note)
+    {
+        
+        NSManagedObjectContext *context = note.object;
+        if (context.CDSID == nil) {
+            return ;
+        }else{
+            
+            if ([self.loggingDelegate respondsToSelector:@selector(logNotificationReceived:withMessage:)]) {
+                NSString *message = [NSString stringWithFormat:@"Inserted: %lu, Updated: %lu, Deleted: %lu, Refresed: %lu, Invalidated: %lu",
+                                     (unsigned long)[note.userInfo[NSInsertedObjectsKey] count],
+                                     (unsigned long)[note.userInfo[NSUpdatedObjectsKey] count],
+                                     (unsigned long)[note.userInfo[NSDeletedObjectsKey] count],
+                                     (unsigned long)[note.userInfo[NSRefreshedObjectsKey] count],
+                                     (unsigned long)[note.userInfo[NSInvalidatedObjectsKey] count]];
+                
+                [self.loggingDelegate logNotificationReceived:note
+                                                  withMessage:message];
+            }
+            
+            NSManagedObjectContext *parentContext = context.parentContext;
+            [parentContext performBlockAndWait:^{
+                
+                if ([self.loggingDelegate respondsToSelector:@selector(logInfo:)]) {
+                    [self.loggingDelegate logInfo:@"Child context saved. Will save parent: %@",parentContext.CDSID];
+                }
+                
+                if (parentContext.hasChanges) {
+                    NSError *error;
+                    if (![parentContext save:&error]) {
+                        if (error != nil) {
+                            
+                            if ([self.loggingDelegate respondsToSelector:@selector(logError:withPrefix:message:)]) {
+                                [self.loggingDelegate logError:error withPrefix:@"CDS_ERROR" message:@"Parent context with CDSID: %@ failed to save after child did save: %@",parentContext.CDSID,context.CDSID];
+                            }
+                        }
+                    }
+                    
+                }
+            }];
+
+            
+            
+            
+            
+        }
+
+        
+        
+        
+        
+    }];
+
+    
+}
 
 
 

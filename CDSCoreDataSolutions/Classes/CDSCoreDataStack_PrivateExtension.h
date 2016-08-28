@@ -9,11 +9,20 @@
 #import <CDSCoreDataSolutions/CDSCoreDataStack.h>
 #import "CDSErrors.h"
 
+@interface NSManagedObjectContext ()
+@property (copy,nonatomic) NSString *CDSID;
+@end
+
+
+
+static NSString *kContextCDSIDPrefix = @"CDSolutions_";
+
+
 @interface CDSCoreDataStack ()
 
 @property (strong,nonatomic,readwrite) NSManagedObjectModel *managedObjectModel;
 @property (strong,nonatomic,readwrite) NSPersistentStoreCoordinator *persistentStoreCoordinator;
-@property (strong,nonatomic) NSManagedObjectContext *publicContext;
-@property (strong,nonatomic) NSManagedObjectContext *privateContext;
+@property (strong,nonatomic,readwrite) NSManagedObjectContext *mainQueueContext;
+@property (strong,nonatomic) NSManagedObjectContext *persistenceContext;
 
 @end

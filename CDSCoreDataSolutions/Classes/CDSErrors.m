@@ -72,12 +72,16 @@ NSString *const kCDSErrorDomain = @"com.KFXTech.CDSCoreDataSolutions";
             localisedDescription = NSLocalizedString(@"<ERROR> Failed to initilise a NSPersistentStoreCoordinator.", @"The NSPersistentStoreCoordinator could not be initilised (aka created)");
             break;
         }
-        case CDSErrorCodeFailedToInitilisePrivateContext:{
-            localisedDescription = NSLocalizedString(@"<ERROR> Failed to initilise a NSManagedObjectContext for private use.", @"The NSManagedObjectContext could not be initilised (aka created) for private use");
+        case CDSErrorCodeFailedToInitilisePersistenceContext:{
+            localisedDescription = NSLocalizedString(@"<ERROR> Failed to initilise a NSManagedObjectContext for persistence use.", @"The NSManagedObjectContext could not be initilised (aka created) for persistence use");
             break;
         }
-        case CDSErrorCodeFailedToInitilisePublicContext:{
-            localisedDescription = NSLocalizedString(@"<ERROR> Failed to initilise a NSManagedObjectContext for public use.", @"The NSManagedObjectContext could not be initilised (aka created) for public use");
+        case CDSErrorCodeFailedToInitiliseMainQueueContext:{
+            localisedDescription = NSLocalizedString(@"<ERROR> Failed to initilise a NSManagedObjectContext on the Main Queue.", @"The NSManagedObjectContext could not be initilised (aka created) on the Main Queue");
+            break;
+        }
+        case CDSErrorCodeFailedToInitiliseBackgroundContext:{
+            localisedDescription = NSLocalizedString(@"<ERROR> Failed to initilise a NSManagedObjectContext on a background queue for public use", @"The NSManagedObjectContext could not be initilised (aka created) on a background queue for public use");
             break;
         }
         case CDSErrorCodeStringIsNull: {

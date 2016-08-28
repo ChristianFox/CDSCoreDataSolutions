@@ -36,7 +36,7 @@
                                        withObject:nil];
         }
         return NO;
-    }else if (![self validateContext:stack.managedObjectContext
+    }else if (![self validateContext:stack.mainQueueContext
                            withError:error]){
         return NO;
     }else if (![self validateModel:stack.managedObjectModel

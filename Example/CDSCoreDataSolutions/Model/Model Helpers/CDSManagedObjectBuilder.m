@@ -41,7 +41,7 @@
         Motorbike *bike = [[Motorbike alloc] initWithEntity:entity
                           insertIntoManagedObjectContext:context];
         bike.name = [NSString stringWithFormat:@"Bike %lu",(unsigned long)idx];
-        bike.blurb = [NSString stringWithFormat:@"%lu KM/h",(unsigned long)idx];
+        bike.blurb = [NSString stringWithFormat:@"%lu KM",(unsigned long)idx];
     }
 
 }
