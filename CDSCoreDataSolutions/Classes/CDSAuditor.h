@@ -119,6 +119,8 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return YES if the stack has contents, NO if it does not.
  *
+ *  @warning This method queries the stack's mainQueueContext (and therefore it's parent persistent context as well) but does not take into account and contexts created using the -newBackgroundContext method, so if you have inserted any ManagedObjects using a background context and have not saved them to the store they will not be counted.
+ *
  *  @since 0.1.0
  */
 -(BOOL)existsContentsInStack:(CDSCoreDataStack*)stack
@@ -153,6 +155,8 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return The number of NSManagedObject instances of the entity in the stack
  *
+ *  @warning This method queries the stack's mainQueueContext (and therefore it's parent persistent context as well) but does not take into account and contexts created using the -newBackgroundContext method, so if you have inserted any ManagedObjects using a background context and have not saved them to the store they will not be counted.
+ *
  *  @since 0.1.0
  */
 -(NSUInteger)countOfManagedObjectsInStack:(CDSCoreDataStack*)stack
@@ -165,6 +169,8 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param error      If an error occurs, upon return contains an NSError object that describes the problem.
  *
  *  @return An NSDictionary where the keys are entity names found in any of the models represented by the stack, and values are a NSNumber storing the amount of managed objects for that entity.
+ *
+ *  @warning This method queries the stack's mainQueueContext (and therefore it's parent persistent context as well) but does not take into account and contexts created using the -newBackgroundContext method, so if you have inserted any ManagedObjects using a background context and have not saved them to the store they will not be counted.
  *
  *  @since 0.1.0
  */

@@ -1,6 +1,6 @@
 {
   "name": "CDSCoreDataSolutions",
-  "version": "0.6.0",
+  "version": "0.6.1",
   "summary": "CDSCoreDataSolutions: Core Data Stack & more.",
   "description": "CDSCoreDataSolutions: Core Data Stack & more. Core Data Stack & more.",
   "homepage": "https://kfxtech@bitbucket.org/kfxtech/cdscoredatasolutions_pod_private.git",
@@ -10,7 +10,7 @@
   },
   "source": {
     "git": "https://kfxtech@bitbucket.org/kfxtech/cdscoredatasolutions_pod_private.git",
-    "tag": "0.6.0"
+    "tag": "0.6.1"
   },
   "platforms": {
     "ios": "8.0"

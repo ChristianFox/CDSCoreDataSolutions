@@ -23,6 +23,10 @@ typedef void(^CDSBooleanCompletionHandler)(BOOL success, NSError * _Nullable err
 //======================================================
 @interface CDSDefinitions : NSObject
 
+extern NSString *const kCDSContextNamePrefix;
+extern NSString *const kCDSMainQueueContextName;
+extern NSString *const kCDSPersistenceContextName;
+extern NSString *const kCDSBackgroundQueueContextName;
 
 
 

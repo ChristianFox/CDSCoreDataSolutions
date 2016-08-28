@@ -9,13 +9,7 @@
 #import <CDSCoreDataSolutions/CDSCoreDataStack.h>
 #import "CDSErrors.h"
 
-@interface NSManagedObjectContext ()
-@property (copy,nonatomic) NSString *CDSID;
-@end
 
-
-
-static NSString *kContextCDSIDPrefix = @"CDSolutions_";
 
 
 @interface CDSCoreDataStack ()

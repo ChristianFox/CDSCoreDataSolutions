@@ -24,15 +24,27 @@ NS_ASSUME_NONNULL_BEGIN
 //--------------------------------------------------------
 #pragma mark - Initilise & Configure
 //--------------------------------------------------------
-/// Returns a singleton instance of CDSCoreDataStack. Actual stack is not configured yet, you need to call configure method separately.
+/**
+ * @brief Access a singleton instance of CDSCoreDataStack
+ * @warning Actual core data stack is not configured yet, you need to call configure method separately.
+ * @return A singleton instance of CDSCoreDataStack
+ * @since 0.1.0
+ *
+ **/
 +(instancetype)sharedStack;
 
-/// Returns an instance of CDSCoreDataStack. Actual stack is not configured yet, you need to call configure method separately.
+/**
+ * @brief Access an instance of CDSCoreDataStack
+ * @warning Actual core data  stack is not configured yet, you need to call configure method separately.
+ * @return An instance of CDSCoreDataStack
+ * @since 0.1.0
+ *
+ **/
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
 
 /**
- *  Configure the core data stack (model, context, store/s & store coordinator). Call this method after initilising an instance using init or sharedStack. Pass in descriptors or don't. Completion block will be called once the entire stack is initilised. Some of the work will be done on a background queue and the completion block is called from that queue.
- *
+ *  @brief Create and configure the Core Data Stack
+ *  @discussion Configure the core data stack (model, context, persistent store/s & store coordinator). Call this method after initilising an instance using init or sharedStack. Pass in descriptors or don't. Completion block will be called once the entire stack is initilised. Some of the work will be done on a background queue and the completion block is called from that queue.
  *  @param modelDescriptors An array of CDSManagedObjectModelDescriptor objects. Each descriptor should describe a ManagedObjectModel included in the project. If nil, then all models found in the main bundle will be merged and used.
  *  @param storeDescriptors An array of CDSPersistentStoreDescriptor objects. Each descriptor should describe a persistent store to use to save data. If nil then a single persistent store will be created using the CDSPersistentStoreDescriptor default settings (NSSQLiteType, in the documents directory) with the name "MainStore.sqlite".
  *  @param handlerOrNil     A block to be called once the entire stack has been configured. Will pass NO if the stack configuration failed and may also provide an NSError.
@@ -47,9 +59,10 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - ManagedObjectContext
 //--------------------------------------------------------
 /**
- * Create a new NSManagedObjectContext with NSPrivateQueueConcurrencyType.
- * You should use one of these to do any long running non-UI related work and then call save on that context to have it's changes propagated to its parent - which is the stack's root context with private concurrency type that has direct access to the store coordinator.
+ * @brief Create a new NSManagedObjectContext with NSPrivateQueueConcurrencyType.
+ * @discussion You should use one of these to do any long running non-UI related work and then call save on that context to have it's changes propagated to its parent - which is the stack's root context with private concurrency type that has direct access to the store coordinator.
  * @return A newly instantiated context
+ * @since 0.5.0
  */
 -(NSManagedObjectContext*)newBackgroundContext;
 
@@ -58,7 +71,7 @@ NS_ASSUME_NONNULL_BEGIN
  * If changes have occurred then save is called on the context
  * @param completionHandler: Provides a BOOL for success status and an NSError object which may be nil
  */
--(void)saveWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+// -(void)saveWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 //--------------------------------------------------------
 #pragma mark - Persistent Store
@@ -72,7 +85,12 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)deletePersistentStoreWithURL:(NSURL*)URL withCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
-/// Delete all the Persistent Stores - not so persistent now are you!
+/* Delete all the Persistent Stores - not so persistent now are you!
+ *
+ *  @param completionHandler: Provides a BOOL for success status and an NSError object which may be nil
+ *
+ * @since 0.1.0
+ */
 -(void)deleteAllPersistentStoresWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 /// Creates persistentStore/s and adds to self.persistentStoreCoordinator. Works on background queue. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"

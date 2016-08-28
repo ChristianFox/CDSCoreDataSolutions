@@ -38,7 +38,11 @@
         [self.stack.mainQueueContext deleteObject:aCar];
     }
     
-    [self.stack saveWithCompletion:nil];
+    NSError *error;
+    if (![self.stack.mainQueueContext save:&error]) {
+        NSLog(@"<ERROR> Error saving self.stack.mainQueueContext: %@",error);
+        XCTFail(@"Failed to save mainQueueContext");
+    }
 
 }
 
@@ -100,7 +104,11 @@
     XCTAssertEqualObjects(fetchedBiz, aCar.business);
     
     // Save so the new objects are persisted to the store
-    [context save:nil];
+    NSError *error;
+    if ([context save:&error]) {
+        NSLog(@"<ERROR> Error saving context: %@",error);
+    }
+
     // Then clear the context
     [self.stack clearMainQueueContextWithCompletion:nil];
     
@@ -123,7 +131,10 @@
     [context deleteObject:aCar];
     
     // Then save
-    [context save:nil];
+    if ([context save:&error]) {
+        NSLog(@"<ERROR> Error saving context: %@",error);
+    }
+
     
     // Now if we fetch we should  get 0 of each object
     businesses = [fetcher fetchFilteredByContainingString:@"Main Queue"
@@ -181,7 +192,12 @@
     XCTAssertEqualObjects(fetchedBiz, aCar.business);
     
     // Save so the new objects are persisted to the store
-    [context save:nil];
+    // Save
+    NSError *error;
+    if ([context save:&error]) {
+        NSLog(@"<ERROR> Error saving context: %@",error);
+    }
+
     // Then clear the context
     [self.stack clearMainQueueContextWithCompletion:nil];
     
@@ -204,7 +220,10 @@
     [context deleteObject:aCar];
     
     // Then save
-    [context save:nil];
+    if ([context save:&error]) {
+        NSLog(@"<ERROR> Error saving context: %@",error);
+    }
+
     
     // Now if we fetch we should  get 0 of each object
     businesses = [fetcher fetchFilteredByContainingString:@"Background Queue"
@@ -278,7 +297,11 @@
     
     // Call save on bgQueue
     [bgQueueContext performBlockAndWait:^{
-        [bgQueueContext save:nil];
+        // Save
+        NSError *error;
+        if ([bgQueueContext save:&error]) {
+            NSLog(@"<ERROR> Error saving bgQueueontext: %@",error);
+        }
     }];
     
     // Fetch on mainQueue, should be 1 of each (car + biz)
@@ -302,8 +325,12 @@
     mainQCar.priceInPence = @333;
     
     // Call save on mainQueue
-    [mainQueueContext save:nil];
-    
+    // Save
+    NSError *error;
+    if ([mainQueueContext save:&error]) {
+        NSLog(@"<ERROR> Error saving mainQueueContext: %@",error);
+    }
+
     // Fetch using bgQueue, edits should be present
     [bgQueueContext performBlockAndWait:^{
         [bgQueueContext reset];
@@ -329,6 +356,13 @@
         
         // Delete objects (from either Q)
         [bgQueueContext deleteObject:bgQCar];
+        
+        // Save
+        NSError *error;
+        if ([bgQueueContext save:&error]) {
+            NSLog(@"<ERROR> Error saving bgQueueContext: %@",error);
+        }
+
     }];
     
     
@@ -349,6 +383,12 @@
                                               error:nil];
     XCTAssertEqual(businesses.count, 0);
     XCTAssertEqual(cars.count, 0);
+    
+    // Save the deletion
+    if ([mainQueueContext save:&error]) {
+        NSLog(@"<ERROR> Error saving mainQueueContext: %@",error);
+    }
+
 }
 
 
@@ -393,7 +433,8 @@
         originalCar.business = originalBiz;
         
     }];
-    
+
+
     CDSFetcher *fetcher = [CDSFetcher fetcher];
     __block NSArray *businesses;
     __block NSArray *cars;
@@ -415,12 +456,22 @@
 
     }];
     
+
     // Call save on bgContext1
     [bgContext1 performBlockAndWait:^{
-        [bgContext1 save:nil];
+
+        // Save
+        NSError *error;
+        if ([bgContext1 save:&error]) {
+            NSLog(@"<ERROR> Error saving bgContext1: %@",error);
+        }
+        
     }];
     
     // Fetch on bgContext2, should be 1 of each (car + biz)
+    __block Business *fetchedBiz;
+    __block Car *fetchedCar;
+
     [bgContext2 performBlockAndWait:^{
         businesses = [fetcher fetchFilteredByContainingString:@"BG1<>BG2 Queue"
                                                     atKeyPath:@"name"
@@ -436,19 +487,25 @@
         XCTAssertEqual(cars.count, 1);
         
         // Edit objects
-        Business *fetchedBiz = businesses.firstObject;
-        Car *fetchedCar = cars.firstObject;
+        fetchedBiz = businesses.firstObject;
+        fetchedCar = cars.firstObject;
         fetchedBiz.employees = @4321;
         fetchedCar.priceInPence = @4321;
         
+
         // Call save on bgContext2
-        [bgContext2 save:nil];
+        // Save
+        NSError *error;
+        if ([bgContext2 save:&error]) {
+            NSLog(@"<ERROR> Error saving bgContext2: %@",error);
+        }
 
     }];
     
+
     // Fetch using bgContext1, edits should be present
     [bgContext1 performBlockAndWait:^{
-        [bgContext1 reset];
+        
         NSArray *businesses2 = [fetcher fetchFilteredByContainingString:@"BG1<>BG2 Queue"
                                                               atKeyPath:@"name"
                                                              entityName:@"Business"
@@ -466,19 +523,24 @@
         Business *bgQbiz = businesses2.firstObject;
         Car *bgQCar = cars2.firstObject;
         
-        [bgContext1 refreshObject:originalBiz mergeChanges:YES];
         XCTAssertEqualObjects(bgQbiz.employees, originalBiz.employees);
         XCTAssertEqualObjects(bgQCar.priceInPence, originalCar.priceInPence);
         
-        // Delete Car
-        [bgContext1 deleteObject:bgQCar];
+        // Delete biz
+        [bgContext1 deleteObject:bgQbiz];
+        
+        // Save
+        NSError *error;
+        if ([bgContext1 save:&error]) {
+            NSLog(@"<ERROR> Error saving bgContext1: %@",error);
+        }
     }];
     
     
     [bgContext2 performBlockAndWait:^{
         
         // Delete objects (from either Q)
-        [bgContext2 deleteObject:originalBiz];
+        [bgContext2 deleteObject:fetchedCar];
         
         
         // Check there are 0 after deletions
@@ -494,6 +556,14 @@
                                                   error:nil];
         XCTAssertEqual(businesses.count, 0);
         XCTAssertEqual(cars.count, 0);
+        
+        // Save
+        NSError *error;
+        if ([bgContext2 save:&error]) {
+            if ([bgContext1 save:&error]) {
+                NSLog(@"<ERROR> Error saving bgContext2: %@",error);
+            }
+        }
 
     }];
 }

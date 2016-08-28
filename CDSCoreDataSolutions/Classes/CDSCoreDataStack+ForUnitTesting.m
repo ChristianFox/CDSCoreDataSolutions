@@ -34,8 +34,7 @@
             }
             return;
         }else{
-            self.mainQueueContext.CDSID = [kContextCDSIDPrefix stringByAppendingString:@"PublicMainQueueContext"];
-            self.mainQueueContext.name = [kContextCDSIDPrefix stringByAppendingString:@"PublicMainQueueContext"];
+            self.mainQueueContext.name = kCDSMainQueueContextName;
             self.mainQueueContext.parentContext = self.persistenceContext;
             if (handlerOrNil != nil) {
                 handlerOrNil(YES,nil);
