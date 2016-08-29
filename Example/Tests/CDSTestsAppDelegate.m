@@ -22,6 +22,8 @@
     CDSPersistentStoreDescriptor *bizStore = [CDSPersistentStoreDescriptor persistentStoreDescriptor];
     bizStore.name = @"BusinessStoreShared";
     
+    NSLog(@"Persistent Store URL is: %@",bizStore.URL);
+    
     // We don't want this method to return until the stack has been configured
     dispatch_semaphore_t semaphore = dispatch_semaphore_create(0);
     [stack configureStackWithModelDescriptors:@[bizModel]

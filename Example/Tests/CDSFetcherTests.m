@@ -86,7 +86,7 @@
         NSManagedObjectContext *context = self.stack.mainQueueContext;
             NSError *error = nil;
 
-
+        
         
         NSArray *cars = [self.sut fetchAllWithEntityName:@"Car"
                                                  context:context

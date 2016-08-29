@@ -522,7 +522,7 @@
     
     
     XCTAssertNotNil(dict);
-    XCTAssertTrue(dict.count == 4, @"Count is %@",@(dict.count));
+    XCTAssertTrue(dict.count == 8, @"Count is %@",@(dict.count));
     XCTAssertTrue([dict[[[dict allKeys]firstObject]] isKindOfClass:[NSNumber class]]);
     NSUInteger totalProducts = [dict[@"Car"]unsignedIntegerValue] + [dict[@"Motorbike"]unsignedIntegerValue];
     XCTAssertTrue(totalProducts == [dict[@"Product"]unsignedIntegerValue]);

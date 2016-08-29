@@ -94,9 +94,20 @@
         return;
     }
 
+    /**********************
+     
+     WARNING:
+     Be careful with changing the order of the code below. If was in a different order and there was a issue which would cause crashes when executing a fetch request on some entities (Motorbike, occassionally Car).
+     After much testing and research I found the link below and re-ordered the code and the crash went away.
+     http://stackoverflow.com/questions/32216188/crash-with-many-to-many-nsmanagedobject-relationship-lookup-in-swift-2-0
+     The commit where this changes will be tag 0.6.3, version 0.6.3, commit name: "Motorbike crash fix"
+     
+     **********************/
+    
     // ## Create Private NSManagedObjectContext ##
     self.persistenceContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
     self.persistenceContext.name = kCDSPersistenceContextName;
+    self.persistenceContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
     if (self.persistenceContext == nil) {
         if (handlerOrNil != nil) {
             NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitilisePersistenceContext
@@ -109,6 +120,7 @@
     // ## Create Public NSManagedObjectContext ##
     self.mainQueueContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
     self.mainQueueContext.name = kCDSMainQueueContextName;
+    self.mainQueueContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
     if (self.mainQueueContext == nil) {
         if (handlerOrNil != nil) {
             NSError *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitiliseMainQueueContext
@@ -117,13 +129,11 @@
         }
         return;
     }
+    self.persistenceContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    self.mainQueueContext.parentContext = self.persistenceContext;
 
     
-    // ## Final Configuration ##
-    self.mainQueueContext.parentContext = self.persistenceContext;
-    self.persistenceContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
-    self.mainQueueContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
-    self.persistenceContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
+    // ## Configure Persistent Stores and finish context config ##
     
     [self configurePersistentStoresWithStoreDescriptors:storeDescriptors
                                       completionHandler:handlerOrNil];

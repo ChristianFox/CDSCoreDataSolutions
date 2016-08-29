@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5B11F38D1D746B6000E03723 /* MotorbikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B11F38C1D746B6000E03723 /* MotorbikeTests.m */; };
 		5B2AB0EA1CEA11F6003A42ED /* AnimalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0C61CEA11F6003A42ED /* AnimalModel.xcdatamodeld */; };
 		5B2AB0EB1CEA11F6003A42ED /* BusinessModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0C81CEA11F6003A42ED /* BusinessModel.xcdatamodeld */; };
 		5B2AB0EC1CEA11F6003A42ED /* Business+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0CC1CEA11F6003A42ED /* Business+CoreDataProperties.m */; };
@@ -67,6 +68,7 @@
 		29051DD2921A96A31C7F6061 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		2C066D0ABDBF941FDD9C4130 /* Pods-CDSCoreDataSolutions_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDSCoreDataSolutions_Example.release.xcconfig"; path = "Pods/Target Support Files/Pods-CDSCoreDataSolutions_Example/Pods-CDSCoreDataSolutions_Example.release.xcconfig"; sourceTree = "<group>"; };
 		5A62D5504DD150B5F4352F75 /* libPods-CDSCoreDataSolutions_Example.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-CDSCoreDataSolutions_Example.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B11F38C1D746B6000E03723 /* MotorbikeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotorbikeTests.m; sourceTree = "<group>"; };
 		5B2AB0C71CEA11F6003A42ED /* AnimalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalModel.xcdatamodel; sourceTree = "<group>"; };
 		5B2AB0C91CEA11F6003A42ED /* BusinessModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusinessModel.xcdatamodel; sourceTree = "<group>"; };
 		5B2AB0CB1CEA11F6003A42ED /* Business+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Business+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				5B2AB0FB1CEA1245003A42ED /* CDSAuditorTests.m */,
 				5B2AB0FF1CEA1245003A42ED /* CDSFetcherTests.m */,
 				5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */,
+				5B11F38C1D746B6000E03723 /* MotorbikeTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
 			path = Tests;
@@ -566,6 +569,7 @@
 				5B2AB1131CEA1404003A42ED /* CDSCoreDataStackCreationTests.m in Sources */,
 				5B2AB1101CEA13D8003A42ED /* CDSAuditorTests.m in Sources */,
 				5B2AB1161CEA1412003A42ED /* CDSPersistentStoreDescriptorTests.m in Sources */,
+				5B11F38D1D746B6000E03723 /* MotorbikeTests.m in Sources */,
 				5B2AB1151CEA140E003A42ED /* CDSManagedObjectModelDescriptorTests.m in Sources */,
 				5BE898611D72085200218C81 /* CDSMultipleContextsTests.m in Sources */,
 				5B2AB1121CEA13F6003A42ED /* CDSCoreDataStackCoordinatorTests.m in Sources */,

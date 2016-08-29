@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "CDSCoreDataSolutions"
-  s.version          = "0.6.1"
+  s.version          = "0.6.3"
 s.summary          = "CDSCoreDataSolutions: Core Data Stack & more."
 
 # This description is used to generate tags and improve search results.
