@@ -457,9 +457,10 @@
          if (context == self.persistenceContext || context.parentContext == self.persistenceContext) {
              
              if ([self.loggingDelegate respondsToSelector:@selector(logNotificationReceived:withMessage:)]) {
-                 NSString *name = [context.name copy];
+                 
+                 NSString *message = [NSString stringWithFormat:@"Will save context with name: %@",context.name];
                  [self.loggingDelegate logNotificationReceived:note
-                                                   withMessage:@"Will save context with name",name];
+                                                   withMessage:message];
              }
              
          }
@@ -492,8 +493,8 @@
             [parentContext performBlockAndWait:^{
                 
                 if ([self.loggingDelegate respondsToSelector:@selector(logInfo:)]) {
-                    NSString *name = [parentContext.name copy];
-                    [self.loggingDelegate logInfo:@"Child context saved. Will save parent: %@",name];
+                    NSString *message = [NSString stringWithFormat:@"Child context saved. Will save parent: %@",parentContext.name];
+                    [self.loggingDelegate logInfo:message];
                 }
                 
                 if (parentContext.hasChanges) {
@@ -504,8 +505,8 @@
                             if ([self.loggingDelegate respondsToSelector:@selector(logError:withPrefix:message:)]) {
                                 NSString *contextName = [context.name copy];
                                 NSString *parentName = [parentContext.name copy];
-
-                                [self.loggingDelegate logError:error withPrefix:@"CDS_ERROR" message:@"Parent context: %@ failed to save after child did save: %@",parentName,contextName];
+                                NSString *message = [NSString stringWithFormat:@"Parent context: %@ failed to save after child did save: %@",parentName,contextName];
+                                [self.loggingDelegate logError:error withPrefix:@"CDS_ERROR" message:message];
                             }
                         }
                     }
