@@ -457,8 +457,9 @@
          if (context == self.persistenceContext || context.parentContext == self.persistenceContext) {
              
              if ([self.loggingDelegate respondsToSelector:@selector(logNotificationReceived:withMessage:)]) {
+                 NSString *name = [context.name copy];
                  [self.loggingDelegate logNotificationReceived:note
-                                                   withMessage:nil];
+                                                   withMessage:@"Will save context with name",name];
              }
              
          }
@@ -491,7 +492,8 @@
             [parentContext performBlockAndWait:^{
                 
                 if ([self.loggingDelegate respondsToSelector:@selector(logInfo:)]) {
-                    [self.loggingDelegate logInfo:@"Child context saved. Will save parent: %@",parentContext.name];
+                    NSString *name = [parentContext.name copy];
+                    [self.loggingDelegate logInfo:@"Child context saved. Will save parent: %@",name];
                 }
                 
                 if (parentContext.hasChanges) {
@@ -500,7 +502,10 @@
                         if (error != nil) {
                             
                             if ([self.loggingDelegate respondsToSelector:@selector(logError:withPrefix:message:)]) {
-                                [self.loggingDelegate logError:error withPrefix:@"CDS_ERROR" message:@"Parent context: %@ failed to save after child did save: %@",parentContext.name,context.name];
+                                NSString *contextName = [context.name copy];
+                                NSString *parentName = [parentContext.name copy];
+
+                                [self.loggingDelegate logError:error withPrefix:@"CDS_ERROR" message:@"Parent context: %@ failed to save after child did save: %@",parentName,contextName];
                             }
                         }
                     }
