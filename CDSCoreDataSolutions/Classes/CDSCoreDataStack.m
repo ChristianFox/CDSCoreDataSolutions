@@ -34,7 +34,8 @@
 {
     self = [super init];
     if (self) {
-        
+        [self registerForNotifications];
+
     }
     return self;
 }
@@ -46,7 +47,6 @@
     
     dispatch_once(&oncePredicate,^{
         sharedStack = [[self alloc]init];
-        [sharedStack registerForNotifications];
     });
     return sharedStack;
 }
