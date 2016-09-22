@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = "CDSCoreDataSolutions"
-  s.version          = "0.6.6"
+  s.version          = "0.7.0"
 s.summary          = "CDSCoreDataSolutions: Core Data Stack & more."
 
 # This description is used to generate tags and improve search results.
@@ -21,11 +21,11 @@ s.summary          = "CDSCoreDataSolutions: Core Data Stack & more."
 CDSCoreDataSolutions: Core Data Stack & more. Core Data Stack & more.
                        DESC
 
-  s.homepage         = "https://kfxtech@bitbucket.org/kfxtech/cdscoredatasolutions_pod_private.git"
+  s.homepage         = "https://kfxtech@bitbucket.org/kfxteam/cdscoredatasolutions_pod_private.git"
   # s.screenshots     = "www.example.com/screenshots_1", "www.example.com/screenshots_2"
   s.license          = 'MIT'
   s.author           = { "Christian Fox" => "christianfox890@icloud.com" }
-  s.source           = { :git => "https://kfxtech@bitbucket.org/kfxtech/cdscoredatasolutions_pod_private.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://kfxtech@bitbucket.org/kfxteam/cdscoredatasolutions_pod_private.git", :tag => s.version.to_s }
   # s.social_media_url = 'https://twitter.com/<TWITTER_USERNAME>'
 
   s.ios.deployment_target = '8.0'
