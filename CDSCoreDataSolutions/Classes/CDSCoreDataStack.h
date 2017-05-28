@@ -83,14 +83,14 @@ NS_ASSUME_NONNULL_BEGIN
  *   Delete a single persistent store. Uses the URL & configuration name in the storeDescriptor to find a match with the NSPersistentStoreCoordinator's stores. If no match is found we create an NSError in the completion handler. If a match is found it is deleted.
  *
  *  @param URL The URL in the local file system where the store backing file is stored. If you used store descriptors the URL can be gotten from the descriptor used to configure the stack in the first place, if you did not then the URL is the documents directory + the default store name "MainStore".
- *  @param handlerOrNil: Provides a BOOL for success status and an NSError object which may be nil
+ *  @param handlerOrNil Provides a BOOL for success status and an NSError object which may be nil
  *  @since 0.1.0
  */
 -(void)deletePersistentStoreWithURL:(NSURL*)URL withCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 /* Delete all the Persistent Stores - not so persistent now are you!
  *
- *  @param handlerOrNil: Provides a BOOL for success status and an NSError object which may be nil
+ *  @param handlerOrNil Provides a BOOL for success status and an NSError object which may be nil
  *
  * @since 0.1.0
  */

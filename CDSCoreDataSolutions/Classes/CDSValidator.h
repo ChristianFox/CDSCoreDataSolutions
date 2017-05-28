@@ -154,7 +154,7 @@ isCorrectForAttributeNamed:(nullable NSString*)attributeName
  *  Validates an entity name in a NSManagedObjectModel.
  *
  *  @param entityName The name of the entity to check.
- *  @param context    The NSManagedObjectModel
+ *  @param model      The NSManagedObjectModel
  *  @param error      If an error occurs, upon return contains an NSError object that describes the problem.
  *
  *  @return YES if there is an entity with the given name in the model.
