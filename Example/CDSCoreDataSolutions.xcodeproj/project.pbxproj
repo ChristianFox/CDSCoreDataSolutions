@@ -35,6 +35,7 @@
 		5B2AB1151CEA140E003A42ED /* CDSManagedObjectModelDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1001CEA1245003A42ED /* CDSManagedObjectModelDescriptorTests.m */; };
 		5B2AB1161CEA1412003A42ED /* CDSPersistentStoreDescriptorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1011CEA1245003A42ED /* CDSPersistentStoreDescriptorTests.m */; };
 		5B2AB1171CEA1419003A42ED /* CDSValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */; };
+		5B5E3D271EDADCC300B2B648 /* CHANGELOG.md in Sources */ = {isa = PBXBuildFile; fileRef = 5B5E3D261EDADCC300B2B648 /* CHANGELOG.md */; };
 		5BE898611D72085200218C81 /* CDSMultipleContextsTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5BE898601D72085200218C81 /* CDSMultipleContextsTests.m */; };
 		6003F58E195388D20070C39A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58D195388D20070C39A /* Foundation.framework */; };
 		6003F590195388D20070C39A /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6003F58F195388D20070C39A /* CoreGraphics.framework */; };
@@ -109,6 +110,7 @@
 		5B2AB1021CEA1245003A42ED /* CDSTestsAppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CDSTestsAppDelegate.h; sourceTree = "<group>"; };
 		5B2AB1031CEA1245003A42ED /* CDSTestsAppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSTestsAppDelegate.m; sourceTree = "<group>"; };
 		5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSValidatorTests.m; sourceTree = "<group>"; };
+		5B5E3D261EDADCC300B2B648 /* CHANGELOG.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; name = CHANGELOG.md; path = ../CHANGELOG.md; sourceTree = "<group>"; };
 		5BE898601D72085200218C81 /* CDSMultipleContextsTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSMultipleContextsTests.m; sourceTree = "<group>"; };
 		6003F58A195388D20070C39A /* CDSCoreDataSolutions_Example.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CDSCoreDataSolutions_Example.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6003F58D195388D20070C39A /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -323,6 +325,7 @@
 				13148A54D63563A12B92F343 /* CDSCoreDataSolutions.podspec */,
 				29051DD2921A96A31C7F6061 /* README.md */,
 				A606651EAC6569657F8EB0CA /* LICENSE */,
+				5B5E3D261EDADCC300B2B648 /* CHANGELOG.md */,
 			);
 			name = "Podspec Metadata";
 			sourceTree = "<group>";
@@ -548,6 +551,7 @@
 				5B2AB0ED1CEA11F6003A42ED /* Business.m in Sources */,
 				5B2AB0F21CEA11F6003A42ED /* Mammal+CoreDataProperties.m in Sources */,
 				5B2AB0F01CEA11F6003A42ED /* Carnivore+CoreDataProperties.m in Sources */,
+				5B5E3D271EDADCC300B2B648 /* CHANGELOG.md in Sources */,
 				5B2AB0EE1CEA11F6003A42ED /* Car+CoreDataProperties.m in Sources */,
 				5B2AB10C1CEA1245003A42ED /* CDSTestsAppDelegate.m in Sources */,
 				5B2AB0EC1CEA11F6003A42ED /* Business+CoreDataProperties.m in Sources */,

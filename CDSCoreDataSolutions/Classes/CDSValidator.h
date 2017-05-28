@@ -1,10 +1,12 @@
-//
-//  CDSValidator.h
-//  Pods
-//
-//  Created by Eyeye on 08/05/2016.
-//
-//
+/********************************
+ *
+ * Copyright © 2016-2017 Christian Fox
+ * All Rights Reserved
+ * Full licence details can be found in the file 'LICENSE' or in the Pods-{yourProjectName}-acknowledgements.markdown
+ *
+ * This file is included with CDSCoreDataSolutions
+ *
+ ************************************/
 
 #import <Foundation/Foundation.h>
 @import CoreData;
@@ -87,7 +89,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Validates an NSNumber
  *
- *  @param string The NSNumber to validate
+ *  @param number The NSNumber to validate
  *  @param error  If an error occurs, upon return contains an NSError object that describes the problem. Will be a CDSErrorCodeNumberIsNull error.
  *
  *  @return YES if the number is valid, NO if not.
@@ -100,7 +102,7 @@ NS_ASSUME_NONNULL_BEGIN
 /**
  *  Validates an NSDate
  *
- *  @param string The NSDate to validate
+ *  @param date The NSDate to validate
  *  @param error  If an error occurs, upon return contains an NSError object that describes the problem. Will be a CDSErrorCodeDateIsNull error.
  *
  *  @return YES if the date is valid, NO if not.
