@@ -25,7 +25,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (strong,nonatomic,readonly) NSManagedObjectContext *mainQueueContext;
 
 //--------------------------------------------------------
-#pragma mark - Initilise & Configure
+#pragma mark - Initilise
 //--------------------------------------------------------
 /**
  * @brief Access a singleton instance of CDSCoreDataStack
@@ -37,13 +37,17 @@ NS_ASSUME_NONNULL_BEGIN
 +(instancetype)sharedStack;
 
 /**
- * @brief Access an instance of CDSCoreDataStack
+ * @brief Create an instance of CDSCoreDataStack
  * @warning Actual core data  stack is not configured yet, you need to call configure method separately.
  * @return An instance of CDSCoreDataStack
  * @since 0.1.0
  *
  **/
 -(instancetype)init NS_DESIGNATED_INITIALIZER;
+    
+//--------------------------------------------------------
+#pragma mark Configure
+//--------------------------------------------------------
 
 /**
  *  @brief Create and configure the Core Data Stack
@@ -57,6 +61,20 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)configureStackWithModelDescriptors:(nullable NSArray<CDSManagedObjectModelDescriptor*>*)modelDescriptors
                          storeDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor*>*)storeDescriptors
                                completion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+
+
+/**
+ *  @brief Create and configure the Core Data Stack
+ *  @discussion Configure the core data stack (model, context, persistent store/s & store coordinator). Call this method after initilising an instance using init or sharedStack. Pass in descriptors or don't. Completion block will be called once the entire stack is initilised. 
+ *  @param modelDescriptors An array of CDSManagedObjectModelDescriptor objects. Each descriptor should describe a ManagedObjectModel included in the project. If nil, then all models found in the main bundle will be merged and used.
+ *  @param storeDescriptors An array of CDSPersistentStoreDescriptor objects. Each descriptor should describe a persistent store to use to save data. If nil then a single persistent store will be created using the CDSPersistentStoreDescriptor default settings (NSSQLiteType, in the documents directory) with the name "MainStore.sqlite".
+ *  @param error      If an error occurs, upon return contains an NSError object that describes the problem.
+ *  @return YES if the operation was successful, otherwise NO
+ *  @since 0.9.0
+ */
+-(BOOL)configureStackSynchronouslyWithModelDescriptors:(nullable NSArray<CDSManagedObjectModelDescriptor*>*)modelDescriptors
+                                      storeDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor*>*)storeDescriptors
+                                                 error:(NSError**)error;
 
 //--------------------------------------------------------
 #pragma mark - ManagedObjectContext
@@ -97,7 +115,12 @@ NS_ASSUME_NONNULL_BEGIN
 -(void)deleteAllPersistentStoresWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 /// Creates persistentStore/s and adds to self.persistentStoreCoordinator. Works on background queue. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"
--(void)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+-(void)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors
+                                   completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+
+/// Creates persistentStore/s and adds to self.persistentStoreCoordinator synchronously. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"
+-(BOOL)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors
+                                               error:(NSError**)error;
 
 //--------------------------------------------------------
 #pragma mark - Managed Object Model

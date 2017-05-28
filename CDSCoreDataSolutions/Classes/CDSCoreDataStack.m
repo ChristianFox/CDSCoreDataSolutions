@@ -53,6 +53,7 @@
     return sharedStack;
 }
 
+
 //--------------------------------------------------------
 #pragma mark - NSObject
 //--------------------------------------------------------
@@ -142,6 +143,80 @@
     
 }
 
+-(BOOL)configureStackSynchronouslyWithModelDescriptors:(NSArray<CDSManagedObjectModelDescriptor *> *)modelDescriptors
+                                      storeDescriptors:(NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors
+                                                 error:(NSError * _Nullable __autoreleasing *)error{
+    
+    // ## Destroy local stack ##
+    // ??? We will have problems if other classes are holding a reference to any of these.
+    self.managedObjectModel = nil;
+    self.persistentStoreCoordinator = nil;
+    self.mainQueueContext = nil;
+    self.persistenceContext = nil;
+    
+    // ## Create ManagedObjectModel ##
+    self.managedObjectModel = [self newManagedObjectModelWithModelDescriptors:modelDescriptors];
+    if (self.managedObjectModel == nil) {
+        if (error != nil) {
+            *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitiliseManagedObjectModel
+                                               withObject:nil];
+            
+        }
+        return NO;
+    }
+    
+    // ## Create NSPersistentStoreCoordinator ##
+    self.persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc]initWithManagedObjectModel:self.managedObjectModel];
+    if (self.persistentStoreCoordinator == nil) {
+        if (error != nil) {
+            *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitilisePersistentStoreCoordinator
+                                               withObject:nil];
+        }
+        return NO;
+    }
+    
+    /**********************
+     
+     WARNING:
+     Be careful with changing the order of the code below. If was in a different order and there was a issue which would cause crashes when executing a fetch request on some entities (Motorbike, occassionally Car).
+     After much testing and research I found the link below and re-ordered the code and the crash went away.
+     http://stackoverflow.com/questions/32216188/crash-with-many-to-many-nsmanagedobject-relationship-lookup-in-swift-2-0
+     The commit where this changes will be tag 0.6.3, version 0.6.3, commit name: "Motorbike crash fix"
+     
+     **********************/
+    
+    // ## Create Private NSManagedObjectContext ##
+    self.persistenceContext = [[NSManagedObjectContext alloc]initWithConcurrencyType:NSPrivateQueueConcurrencyType];
+    self.persistenceContext.name = kCDSPersistenceContextName;
+    self.persistenceContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
+    if (self.persistenceContext == nil) {
+        if (error != nil) {
+            *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitilisePersistenceContext
+                                               withObject:nil];
+        }
+        return NO;
+    }
+    
+    // ## Create Public NSManagedObjectContext ##
+    self.mainQueueContext = [[NSManagedObjectContext alloc] initWithConcurrencyType:NSMainQueueConcurrencyType];
+    self.mainQueueContext.name = kCDSMainQueueContextName;
+    self.mainQueueContext.mergePolicy = [[NSMergePolicy alloc]initWithMergeType:NSMergeByPropertyObjectTrumpMergePolicyType];
+    if (self.mainQueueContext == nil) {
+        if (error != nil) {
+            *error = [CDSErrors errorForErrorCode:CDSErrorCodeFailedToInitiliseMainQueueContext
+                                               withObject:nil];
+        }
+        return NO;
+    }
+    self.persistenceContext.persistentStoreCoordinator = self.persistentStoreCoordinator;
+    self.mainQueueContext.parentContext = self.persistenceContext;
+    
+    
+    // ## Configure Persistent Stores and finish context config ##
+    return [self configurePersistentStoresWithStoreDescriptors:storeDescriptors error:error];
+}
+
+
 //--------------------------------------------------------
 #pragma mark - Public Accessors
 //--------------------------------------------------------
@@ -164,76 +239,6 @@
 }
 
 
-// TODO: Can probably get rid of this...
-//-(void)saveWithCompletion:(CDSBooleanCompletionHandler)handlerOrNil{
-//    
-//    
-//    //Always start from the main thread
-//    if (![NSThread isMainThread]) {
-//        dispatch_sync(dispatch_get_main_queue(), ^{
-//            [self saveWithCompletion:handlerOrNil];
-//        });
-//        return;
-//    }
-//    
-//    // if no changes to save, lets get outta here!
-//    __block BOOL publicHasChanges = NO;
-//    __block BOOL privateHasChanges = NO;
-//    
-//    [self.persistenceContext performBlockAndWait:^{
-//       
-//        privateHasChanges = self.persistenceContext.hasChanges;
-//        
-//        [self.mainQueueContext performBlockAndWait:^{
-//            
-//            publicHasChanges = self.mainQueueContext.hasChanges;
-//            
-//            if (!publicHasChanges && !privateHasChanges) {
-//                
-//                if (handlerOrNil != nil) {
-//                    handlerOrNil(YES,nil);
-//                }
-//                return;
-//            }else{
-//                
-//                
-//                // do saving here
-//                [self.mainQueueContext performBlockAndWait:^{
-//                    
-//                    NSError *error = nil;
-//                    BOOL mainContextSaved = NO;
-//                    mainContextSaved = [self.mainQueueContext save:&error];
-//                    if (!mainContextSaved) {
-//                        if (handlerOrNil != nil) {
-//                            handlerOrNil(NO,error);
-//                        }
-//                        return;
-//                    }
-//                    
-//                    [self.persistenceContext performBlock:^{
-//                        
-//                        NSError *privateError = nil;
-//                        BOOL persistenceContextSaved = NO;
-//                        persistenceContextSaved = [self.persistenceContext save:&privateError];
-//                        if (!persistenceContextSaved) {
-//                            if (handlerOrNil != nil) {
-//                                handlerOrNil(NO,privateError);
-//                            }
-//                            return;
-//                        }
-//                        
-//                        // SUCCESSFULLY SAVED
-//                        if (handlerOrNil != nil) {
-//                            handlerOrNil(YES,nil);
-//                        }
-//                    }];
-//                }];
-//            }
-//        }];
-//    }];
-//    
-//}
-//
 
 //--------------------------------------------------------
 #pragma mark - Persistent Store
@@ -372,6 +377,48 @@
     });
 }
 
+-(BOOL)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors
+                                               error:(NSError * _Nullable __autoreleasing *)error{
+
+    
+    
+    if (storeDescriptors.count >= 1) {
+        
+        // For each descriptor, creat a store and add it to coordinator
+        for (CDSPersistentStoreDescriptor *descriptor in storeDescriptors) {
+            
+            
+            NSPersistentStore *store = [self.persistentStoreCoordinator addPersistentStoreWithType:descriptor.type
+                                                                                     configuration:descriptor.configuration
+                                                                                               URL:descriptor.URL
+                                                                                           options:descriptor.options
+                                                                                             error:error];
+            // If any of the stores are nil then return
+            if (store == nil) {
+                return NO;
+            }
+        }
+        
+    }else{
+        
+        // Create a descriptor which will have default values, use that to add a single store.
+        CDSPersistentStoreDescriptor *defaultDescriptor = [CDSPersistentStoreDescriptor persistentStoreDescriptor];
+        defaultDescriptor.name = @"MainStore";
+        NSPersistentStore *store =  [self.persistentStoreCoordinator addPersistentStoreWithType:defaultDescriptor.type
+                                                                                  configuration:defaultDescriptor.configuration
+                                                                                            URL:defaultDescriptor.URL
+                                                                                        options:defaultDescriptor.options
+                                                                                          error:error];
+        // If the stores is nil then return
+        if (store == nil) {
+            return NO;
+        }
+        
+    }
+    
+    // If we get to this point it must have been a success
+    return YES;
+}
 
 
 
