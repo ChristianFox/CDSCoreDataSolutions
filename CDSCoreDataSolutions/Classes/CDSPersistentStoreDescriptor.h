@@ -12,8 +12,8 @@
 
 @interface CDSPersistentStoreDescriptor : NSObject
 
-/// The type of store (SQLite, XML etc). Currently only SQLite is supported so defaults to that and is readonly
-@property (copy,nonatomic, readonly) NSString *type;
+/// The type of store (NSSQLiteStoreType or NSInMemoryStoreType). Currently only NSSQLiteStoreType and NSInMemoryStoreType are supported. Defaults to NSSQLiteStoreType
+@property (copy,nonatomic) NSString *type;
 /// The name of the store in the file system. Must be set before use.
 @property (copy,nonatomic) NSString *name;
 /// The directory the store should be saved in. Defaults to the Documents Directory.

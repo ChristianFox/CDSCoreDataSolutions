@@ -104,7 +104,9 @@ NS_ASSUME_NONNULL_BEGIN
  *  @param handlerOrNil Provides a BOOL for success status and an NSError object which may be nil
  *  @since 0.1.0
  */
--(void)deletePersistentStoreWithURL:(NSURL*)URL withCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+-(void)deletePersistentStoreWithURL:(NSURL*)URL
+                     withCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+
 
 /* Delete all the Persistent Stores - not so persistent now are you!
  *
@@ -114,9 +116,11 @@ NS_ASSUME_NONNULL_BEGIN
  */
 -(void)deleteAllPersistentStoresWithCompletion:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
+
 /// Creates persistentStore/s and adds to self.persistentStoreCoordinator. Works on background queue. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"
 -(void)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors
                                    completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+
 
 /// Creates persistentStore/s and adds to self.persistentStoreCoordinator synchronously. Creates a store for each storeDescriptor held or if none then creates a single store with the name "MainStore"
 -(BOOL)configurePersistentStoresWithStoreDescriptors:(nullable NSArray<CDSPersistentStoreDescriptor *> *)storeDescriptors
@@ -126,7 +130,8 @@ NS_ASSUME_NONNULL_BEGIN
 #pragma mark - Managed Object Model
 //--------------------------------------------------------
 /// Creates the managedObjectModel. If model descriptors are not nil then those are used to create models and then merge into 1 model. If descriptors are nil then we merge any models from the main bundle.
--(void)configureManagedObjectModelWithModelDescriptors:(nullable NSArray<CDSManagedObjectModelDescriptor *> *)modelDescriptors completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
+-(void)configureManagedObjectModelWithModelDescriptors:(nullable NSArray<CDSManagedObjectModelDescriptor *> *)modelDescriptors
+                                     completionHandler:(nullable CDSBooleanCompletionHandler)handlerOrNil;
 
 @end
 NS_ASSUME_NONNULL_END

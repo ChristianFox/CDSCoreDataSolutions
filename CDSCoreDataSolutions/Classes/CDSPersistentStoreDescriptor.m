@@ -14,7 +14,7 @@
 @interface CDSPersistentStoreDescriptor ()
 
 @property (copy,nonatomic, readwrite) NSURL *URL;
-@property (copy,nonatomic, readwrite) NSString *type;
+//@property (copy,nonatomic, readwrite) NSString *type;
 @end
 
 @implementation CDSPersistentStoreDescriptor
@@ -70,7 +70,12 @@
     NSString *extension;
     if (self.type == NSSQLiteStoreType) {
         extension = @"sqlite";
+    }else if (self.type == NSInMemoryStoreType){
+        return nil;
+//    }else if (self.type == NSBinaryStoreType){
+//        extension = @""; // TODO: Find out what extension for this
     }
+
     NSString *name = [self.name stringByAppendingPathExtension:extension];
     _URL = [self.directory URLByAppendingPathComponent:name];
     return _URL;

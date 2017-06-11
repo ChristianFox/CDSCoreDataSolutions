@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3DCCE0EE724C66001C826A7D /* libPods-CDSCoreDataSolutions_Example.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 602FA86A9580435FD5A985EB /* libPods-CDSCoreDataSolutions_Example.a */; };
+		5B00913D1EED4CC400C402DF /* CDSInMemoryStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B00913C1EED4CC400C402DF /* CDSInMemoryStoreTests.m */; };
 		5B11F38D1D746B6000E03723 /* MotorbikeTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 5B11F38C1D746B6000E03723 /* MotorbikeTests.m */; };
 		5B2AB0EA1CEA11F6003A42ED /* AnimalModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0C61CEA11F6003A42ED /* AnimalModel.xcdatamodeld */; };
 		5B2AB0EB1CEA11F6003A42ED /* BusinessModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 5B2AB0C81CEA11F6003A42ED /* BusinessModel.xcdatamodeld */; };
@@ -67,6 +68,7 @@
 		13148A54D63563A12B92F343 /* CDSCoreDataSolutions.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = CDSCoreDataSolutions.podspec; path = ../CDSCoreDataSolutions.podspec; sourceTree = "<group>"; };
 		29051DD2921A96A31C7F6061 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = net.daringfireball.markdown; name = README.md; path = ../README.md; sourceTree = "<group>"; };
 		307ABF0FEAC69BDB5D721CF3 /* Pods-CDSCoreDataSolutions_Example.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CDSCoreDataSolutions_Example.debug.xcconfig"; path = "Pods/Target Support Files/Pods-CDSCoreDataSolutions_Example/Pods-CDSCoreDataSolutions_Example.debug.xcconfig"; sourceTree = "<group>"; };
+		5B00913C1EED4CC400C402DF /* CDSInMemoryStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CDSInMemoryStoreTests.m; sourceTree = "<group>"; };
 		5B11F38C1D746B6000E03723 /* MotorbikeTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MotorbikeTests.m; sourceTree = "<group>"; };
 		5B2AB0C71CEA11F6003A42ED /* AnimalModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = AnimalModel.xcdatamodel; sourceTree = "<group>"; };
 		5B2AB0C91CEA11F6003A42ED /* BusinessModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BusinessModel.xcdatamodel; sourceTree = "<group>"; };
@@ -303,6 +305,7 @@
 				5B2AB0FB1CEA1245003A42ED /* CDSAuditorTests.m */,
 				5B2AB0FF1CEA1245003A42ED /* CDSFetcherTests.m */,
 				5B2AB1041CEA1245003A42ED /* CDSValidatorTests.m */,
+				5B00913C1EED4CC400C402DF /* CDSInMemoryStoreTests.m */,
 				5B11F38C1D746B6000E03723 /* MotorbikeTests.m */,
 				6003F5B6195388D20070C39A /* Supporting Files */,
 			);
@@ -575,6 +578,7 @@
 				5B2AB1161CEA1412003A42ED /* CDSPersistentStoreDescriptorTests.m in Sources */,
 				5B11F38D1D746B6000E03723 /* MotorbikeTests.m in Sources */,
 				5B2AB1151CEA140E003A42ED /* CDSManagedObjectModelDescriptorTests.m in Sources */,
+				5B00913D1EED4CC400C402DF /* CDSInMemoryStoreTests.m in Sources */,
 				5BE898611D72085200218C81 /* CDSMultipleContextsTests.m in Sources */,
 				5B2AB1121CEA13F6003A42ED /* CDSCoreDataStackCoordinatorTests.m in Sources */,
 			);
