@@ -1,6 +1,8 @@
 
 # CDSCodeDataSolutions ChangeLog #
 
+## v1.0.0 Move to new bb repo & bump to v1.0.0
+
 ## v0.9.1.0 Adds support for NSInMemoryStoreType
 - CDSPersistentStoreDescriptor: makes type readwrite, url returns nil if NSInMemoryStoreType, updates type property doc comment
 - Adds CDSInMemoryStoreTests.m
