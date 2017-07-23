@@ -11,7 +11,7 @@ CDSCoreDataSolutions: Core Data Stack & more. Core Data Stack & more.
   s.homepage         = "https://kfxtech@bitbucket.org/kfx_pods/cdscoredatasolutions.git"
   s.license          = 'MIT'
   s.author           = { "Christian Fox" => "christianfox890@icloud.com" }
-  s.source           = { :git => "https://kfxtech@bitbucket.org/kfxteam/cdscoredatasolutions_pod_private.git", :tag => s.version.to_s }
+  s.source           = { :git => "https://kfxtech@bitbucket.org/kfx_pods/cdscoredatasolutions_pod_private.git", :tag => s.version.to_s }
 
   s.ios.deployment_target = '8.0'
 
