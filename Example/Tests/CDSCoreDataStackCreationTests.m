@@ -1,10 +1,3 @@
-//
-//  CDSCoreDataStackTests.m
-//  CDSCoreDataSolutions
-//
-//  Created by Eyeye on 07/05/2016.
-//  Copyright © 2016 Christian Fox. All rights reserved.
-//
 
 @import XCTest;
 #import <CDSCoreDataSolutions/CDSCoreDataStack.h>

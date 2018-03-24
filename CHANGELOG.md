@@ -1,6 +1,8 @@
 
 # CDSCodeDataSolutions ChangeLog #
 
+### v1.1.0 |  Updates Licence, move to github, makes pod public
+
 ## v1.0.0 Move to new bb repo & bump to v1.0.0
 
 ## v0.9.1.0 Adds support for NSInMemoryStoreType
